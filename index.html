@@ -635,7 +635,7 @@
       <div
         id="video-pill"
         class="absolute overflow-hidden shadow-2xl"
-        style="top: 18%; bottom: 18%; left: 22%; right: 18%; border-radius: 0.75rem; z-index: 20; will-change: top, left, right, bottom, border-radius;"
+        style="top: 20%; bottom: 20%; left: clamp(6%, 12vw, 20%); right: clamp(6%, 12vw, 18%); border-radius: 1.25rem; z-index: 20; will-change: top, left, right, bottom, border-radius;"
       >
         <video
           src="./15126000-uhd_2560_1440_50fps.mp4"
@@ -643,7 +643,9 @@
           muted
           loop
           playsinline
-          class="w-full h-full object-cover"
+          webkit-playsinline
+          preload="auto"
+          class="w-full h-full object-cover pointer-events-none"
         ></video>
       </div>
     </section>
@@ -1763,40 +1765,58 @@
       updateClocks();
       setInterval(updateClocks, 1000);
 
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-          gsap.registerPlugin(ScrollTrigger);
+      function initVideoScrollTrigger() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
 
-          const container = document.getElementById('video-hero-section');
-          const videoPill = document.getElementById('video-pill');
-          const textGroup = document.getElementById('video-hero-text');
+        const container = document.getElementById('video-hero-section');
+        const videoPill = document.getElementById('video-pill');
+        const textGroup = document.getElementById('video-hero-text');
 
-          if (container && videoPill && textGroup) {
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: container,
-                start: 'top top',
-                end: '+=150%',
-                scrub: 1,
-                pin: true,
-              }
-            });
+        if (!container || !videoPill || !textGroup) return;
 
-            tl.to(videoPill, {
-              top: '0%',
-              left: '0%',
-              bottom: '0%',
-              right: '0%',
-              borderRadius: '0rem',
-              ease: 'none'
-            }, 0)
-            .to(textGroup, {
-              opacity: 0,
-              scale: 1.15,
-              filter: 'blur(12px)',
-              ease: 'none'
-            }, 0);
+        ScrollTrigger.getAll().forEach(t => t.kill());
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: 'top top',
+            end: '+=120%',
+            scrub: 0.5,
+            pin: true,
+            anticipatePin: 1,
+            pinSpacing: true,
+            invalidateOnRefresh: true,
+            fastScrollEnd: true,
+            preventOverlaps: true
           }
+        });
+
+        tl.to(videoPill, {
+          top: '0%',
+          left: '0%',
+          bottom: '0%',
+          right: '0%',
+          borderRadius: '0px',
+          ease: 'power1.inOut'
+        }, 0)
+        .to(textGroup, {
+          opacity: 0,
+          scale: 1.08,
+          filter: 'blur(10px)',
+          ease: 'power1.inOut'
+        }, 0);
+      }
+
+      if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', initVideoScrollTrigger);
+      } else {
+        initVideoScrollTrigger();
+      }
+
+      window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
         }
       });
     })();
