@@ -227,9 +227,67 @@
                 <input type="text" class="form-control" data-cms-bind="videohero.bottom_word">
               </div>
               <div class="col-12">
-                <label class="form-label">Ruta o Enlace del Video (MP4)</label>
-                <input type="text" class="form-control" data-cms-bind="videohero.video_url">
-                <small class="text-secondary">Por defecto: <code>./15126000-uhd_2560_1440_50fps.mp4</code></small>
+                <label class="form-label">Ruta o URL del Video (MP4)</label>
+                <input type="text" class="form-control" data-cms-bind="videohero.video_url" placeholder="./15126000-uhd_2560_1440_50fps.mp4">
+                <small class="text-secondary">Escribe la ruta del archivo (ej: <code>./mi_video.mp4</code>) o una URL externa.</small>
+              </div>
+              <div class="col-12">
+                <label class="form-label">— O sube un nuevo video directamente —</label>
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                  <label id="videoUploadLabel" class="btn btn-outline-danger btn-sm mb-0" style="cursor:pointer;">
+                    <i class="bi bi-cloud-upload me-1"></i>Seleccionar Video MP4
+                    <input type="file" id="videoFileInput" accept="video/mp4,video/*" style="display:none;">
+                  </label>
+                  <span id="videoFileName" class="text-secondary small">Ningún archivo seleccionado</span>
+                </div>
+                <div id="videoPreviewWrap" class="mt-3" style="display:none;">
+                  <video id="videoPreview" controls style="max-width:100%; max-height:180px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);"></video>
+                </div>
+                <small class="text-warning d-block mt-1"><i class="bi bi-info-circle me-1"></i>Al subir un video, se guardará como base64 en localStorage. Para archivos grandes (>50MB) usa la ruta directa.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4b. TEMPORIZADOR DE CUENTA REGRESIVA -->
+      <div class="section-card">
+        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secCountdown">
+          <span><i class="bi bi-hourglass-split me-2 text-warning"></i>4b. Temporizador de Cuenta Regresiva</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secCountdown" class="collapse">
+          <div class="card-body">
+            <p class="text-secondary small mb-3">Define el tiempo exacto de duración del temporizador. Al guardar, el contador se reiniciará desde estos valores.</p>
+            <div class="row g-3">
+              <div class="col-md-3">
+                <label class="form-label">Días</label>
+                <input type="number" class="form-control" id="countdown_days" min="0" max="30" placeholder="3" data-cms-bind="countdown.days_duration">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Horas</label>
+                <input type="number" class="form-control" id="countdown_hours" min="0" max="23" placeholder="4" data-cms-bind="countdown.hours_duration">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Minutos</label>
+                <input type="number" class="form-control" id="countdown_minutes" min="0" max="59" placeholder="20" data-cms-bind="countdown.minutes_duration">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Segundos</label>
+                <input type="number" class="form-control" id="countdown_seconds" min="0" max="59" placeholder="0" data-cms-bind="countdown.seconds_duration">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Texto de la Etiqueta (Label Superior)</label>
+                <input type="text" class="form-control" data-cms-bind="countdown.label" placeholder="EL ACCESO GRATUITO EXPIRA EN:">
+              </div>
+              <div class="col-12">
+                <div class="alert" style="background: rgba(255,95,26,0.1); border: 1px solid rgba(255,95,26,0.3); border-radius: 10px; padding: 12px; color: #ffa563;">
+                  <i class="bi bi-arrow-repeat me-2"></i>
+                  <strong>Al guardar y publicar</strong>, el temporizador de la landing se reiniciará automáticamente desde los valores ingresados aquí.
+                  <button id="resetCountdownBtn" class="btn btn-sm btn-outline-warning ms-3">
+                    <i class="bi bi-arrow-clockwise me-1"></i>Reiniciar Ahora
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -366,6 +424,13 @@
         right_word: "forma de",
         bottom_word: "vivir",
         video_url: "./15126000-uhd_2560_1440_50fps.mp4"
+      },
+      countdown: {
+        days_duration: 3,
+        hours_duration: 4,
+        minutes_duration: 20,
+        seconds_duration: 0,
+        label: "EL ACCESO GRATUITO EXPIRA EN:"
       },
       chat: {
         heading: "¿Listo para viajar el mundo y ganar mientras lo haces?",
@@ -519,6 +584,76 @@
         alert('Datos restablecidos.');
       }
     });
+
+    // ── VIDEO FILE UPLOAD ──
+    document.getElementById('videoFileInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      document.getElementById('videoFileName').textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(1) + ' MB)';
+      const objUrl = URL.createObjectURL(file);
+      const preview = document.getElementById('videoPreview');
+      preview.src = objUrl;
+      document.getElementById('videoPreviewWrap').style.display = 'block';
+
+      if (file.size < 50 * 1024 * 1024) {
+        // < 50MB: store as base64 for portability
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          setNested(siteData, 'videohero.video_url', evt.target.result);
+          // update the URL input field
+          const urlInput = document.querySelector('[data-cms-bind="videohero.video_url"]');
+          if (urlInput) urlInput.value = '(video subido — base64)';
+          document.getElementById('saveStatus').textContent = '⚠️ Hay cambios sin guardar';
+          document.getElementById('saveStatus').className = 'small text-warning';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Large file: just show a path hint
+        document.getElementById('videoFileName').innerHTML = `<span class="text-warning">Archivo grande (${(file.size/1024/1024).toFixed(0)} MB). Copia el archivo al servidor y escribe la ruta en el campo de arriba.</span>`;
+      }
+    });
+
+    // ── COUNTDOWN TIMER RESET ──
+    function computeCountdownMs() {
+      const d = parseInt(document.getElementById('countdown_days').value) || 0;
+      const h = parseInt(document.getElementById('countdown_hours').value) || 0;
+      const m = parseInt(document.getElementById('countdown_minutes').value) || 0;
+      const s = parseInt(document.getElementById('countdown_seconds').value) || 0;
+      return ((d * 24 * 60 * 60) + (h * 60 * 60) + (m * 60) + s) * 1000;
+    }
+
+    document.getElementById('resetCountdownBtn').addEventListener('click', () => {
+      const ms = computeCountdownMs();
+      if (ms <= 0) {
+        alert('Por favor ingresa al menos un valor mayor que 0.');
+        return;
+      }
+      const newDeadline = new Date().getTime() + ms;
+      localStorage.setItem('travel_landing_countdown_target', newDeadline);
+      alert('✅ Temporizador reiniciado. Recarga la landing para ver el nuevo contador.');
+    });
+
+    // Also reset countdown on save
+    const originalSaveBtn = document.getElementById('saveChangesBtn');
+    originalSaveBtn.addEventListener('click', () => {
+      localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
+
+      // If countdown values were set, reset the countdown timer too
+      const ms = computeCountdownMs();
+      if (ms > 0) {
+        const newDeadline = new Date().getTime() + ms;
+        localStorage.setItem('travel_landing_countdown_target', newDeadline);
+      }
+
+      const status = document.getElementById('saveStatus');
+      status.textContent = '✅ ¡Cambios guardados y publicados con éxito!';
+      status.className = 'small text-success fw-bold';
+      setTimeout(() => {
+        status.textContent = 'Cambios sincronizados';
+        status.className = 'small text-secondary';
+      }, 4000);
+    });
   </script>
 </body>
 </html>
+
