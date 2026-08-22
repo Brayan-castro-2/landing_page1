@@ -108,6 +108,14 @@
       animation: msgIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
 
+    /* Authentic WhatsApp Dark Wallpaper Doodle Pattern */
+    .whatsapp-bg-pattern {
+      background-color: #0b141a;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.03) 1px, #0b141a 1px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+
     /* Custom Chat Scrollbar */
     .custom-scrollbar::-webkit-scrollbar {
       width: 5px;
@@ -162,13 +170,13 @@
       <!-- Left Column: Marketing Copy -->
       <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
         <!-- Live Transmitting Tag -->
-        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold bg-brandorange-500/10 text-brandorange-accent border border-brandorange-500/20 uppercase tracking-widest mb-6"
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-brandorange-500/10 text-brandorange-accent border border-brandorange-500/20 uppercase tracking-widest mb-4 sm:mb-6"
               data-cms="hero.eyebrow">
           100% EN VIVO · DEL 24 AL 27 DE AGOSTO
         </span>
 
         <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl md:text-[54px] font-display font-extrabold text-white tracking-tight leading-[1.12] mb-6"
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-display font-extrabold text-white tracking-tight leading-[1.15] mb-4 sm:mb-6"
             data-cms="hero.title">
           El Mundo es Demasiado Grande <br>
           <span class="bg-gradient-to-r from-brandblue-light via-brandblue-cyan to-brandblue-light bg-clip-text text-transparent">Para Quedarte</span> <br>
@@ -176,39 +184,39 @@
         </h1>
 
         <!-- Subtitle -->
-        <p class="text-base sm:text-lg text-slate-400 max-w-xl leading-relaxed mb-8"
+        <p class="text-sm sm:text-base md:text-lg text-slate-400 max-w-xl leading-relaxed mb-6 sm:mb-8"
            data-cms="hero.subtitle">
           Viaja en cruceros de lujo y hoteles 5 estrellas a precio de socio. Construye un negocio real y pasivo en turismo digital. Sin jefe, sin horarios rígidos y sin pedir permiso a nadie.
         </p>
 
         <!-- CTA & Social Proof -->
-        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-8">
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-6 sm:mb-8">
           <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20el%20Acceso%20VIP%20a%20las%204%20clases%20en%20vivo"
              target="_blank"
              rel="noopener noreferrer"
-             class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-brandorange-500 to-brandorange-accent text-white font-extrabold text-lg px-8 py-4.5 rounded-2xl shadow-xl shadow-brandorange-500/20 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] w-full sm:w-auto relative group overflow-hidden"
+             class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-brandorange-500 to-brandorange-accent text-white font-extrabold text-base sm:text-lg px-7 sm:px-8 py-3.5 sm:py-4.5 rounded-2xl shadow-xl shadow-brandorange-500/20 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] w-full sm:w-auto relative group overflow-hidden"
              data-cms="hero.cta">
             <span class="absolute inset-0 w-full h-full bg-white/10 transform -skew-x-12 -translate-x-full group-hover:animate-[shine_1s_ease-in-out]"></span>
             <span>Quiero el Acceso VIP</span>
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
             </svg>
           </a>
         </div>
 
         <!-- Micro Bullet Checklist -->
-        <ul class="flex flex-col gap-3 text-sm text-slate-400 font-medium">
-          <li class="flex items-center gap-2">
-            <svg class="w-4.5 h-4.5 text-brandorange-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <ul class="flex flex-col gap-2.5 sm:gap-3 text-xs sm:text-sm text-slate-400 font-medium text-left">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 flex-shrink-0 text-brandorange-accent" style="min-width: 16px; min-height: 16px;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
             </svg>
-            Entrenamiento 100% gratuito (Sin compromisos)
+            <span>Entrenamiento 100% gratuito (Sin compromisos)</span>
           </li>
-          <li class="flex items-center gap-2">
-            <svg class="w-4.5 h-4.5 text-brandorange-accent" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 flex-shrink-0 text-brandorange-accent" style="min-width: 16px; min-height: 16px;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
             </svg>
-            Respuestas y soporte directo de Andrés Romero (+56 9 2614 2489)
+            <span>Respuestas y soporte directo de Andrés Romero (+56 9 2614 2489)</span>
           </li>
         </ul>
       </div>
@@ -667,51 +675,142 @@
         </p>
       </div>
 
-      <!-- Main Chat Simulator Window (Large MacBook / Web Interface) -->
-      <div class="max-w-3xl mx-auto bg-[#0b0c16] border border-white/10 rounded-3xl overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.8)] flex flex-col" id="interactiveChatWidget">
+      <!-- Main Chat Simulator Window (Full WhatsApp Web Interface) -->
+      <div class="max-w-5xl mx-auto bg-[#111b21] border border-white/15 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] flex flex-col" id="interactiveChatWidget">
         
-        <!-- Header -->
-        <div class="bg-[#202c33] px-5 py-3.5 border-b border-white/5 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#00a884]">
-              <img src="./ANDRES.png" alt="Andrés Romero" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <div class="text-sm font-bold text-white flex items-center gap-2">
-                <span>Andrés Romero</span>
-                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full font-medium">✓ Mentor Oficial</span>
-              </div>
-              <div class="text-xs text-emerald-400 font-medium">En línea • WhatsApp Oficial (+56 9 2614 2489)</div>
-            </div>
+        <!-- macOS Window Title Bar -->
+        <div class="bg-[#202c33] px-4 py-2.5 border-b border-white/5 flex items-center justify-between select-none">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block"></span>
+            <span class="text-xs text-slate-400 font-mono ml-2 hidden sm:inline-block">web.whatsapp.com</span>
           </div>
-
-          <!-- Replay Button -->
+          <div class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-[#00a884]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.023 14.07 1 11.96 1c-5.45 0-9.88 4.376-9.884 9.807-.002 1.778.474 3.514 1.378 5.081L2.43 21.65l6.09-1.597z"/></svg>
+            <span>WhatsApp Web • Andrés Romero</span>
+          </div>
           <button type="button" 
                   id="chatInteractiveReplayBtn" 
-                  class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-xl border border-white/10 transition-colors">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                  class="flex items-center gap-1.5 text-xs text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-lg border border-white/10 transition-colors">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
             <span>Reiniciar</span>
           </button>
         </div>
 
-        <!-- Chat Conversation Area -->
-        <div class="p-5 flex flex-col gap-3.5 min-h-[320px] max-h-[420px] overflow-y-auto bg-[#0b141a] custom-scrollbar" id="interactiveChatMessages">
-          <!-- Dynamically populated via JS -->
-        </div>
+        <!-- 2-Column WhatsApp Web Workspace -->
+        <div class="flex flex-1 min-h-[440px] sm:min-h-[500px]">
+          
+          <!-- Left Sidebar (Desktop Only) -->
+          <div class="hidden md:flex w-[290px] lg:w-[320px] flex-col border-r border-white/5 bg-[#111b21] shrink-0">
+            <!-- Sidebar Header -->
+            <div class="p-3 bg-[#202c33] border-b border-white/5 flex items-center justify-between">
+              <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                <img src="./ANDRES.png" alt="Usuario" class="w-full h-full object-cover">
+              </div>
+              <div class="flex items-center gap-3 text-slate-400">
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+              </div>
+            </div>
 
-        <!-- Input Bar (User can write custom text) -->
-        <div class="bg-[#111b21] p-3.5 border-t border-white/5 flex items-center gap-3">
-          <input type="text" 
-                 id="interactiveChatInput" 
-                 placeholder="Escribe tu duda o mensaje a Andrés..." 
-                 class="flex-1 bg-[#2a3942] text-white text-xs sm:text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brandorange-500 placeholder-slate-400"
-                 autocomplete="off">
-          <button type="button" 
-                  id="interactiveChatSendBtn" 
-                  class="w-11 h-11 bg-gradient-to-r from-brandorange-500 to-brandorange-accent hover:from-brandorange-600 hover:to-brandorange-500 text-white rounded-xl flex items-center justify-center transition-transform active:scale-95 shadow-lg shadow-brandorange-500/20 shrink-0"
-                  aria-label="Enviar mensaje">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
+            <!-- Search Bar -->
+            <div class="p-2.5 border-b border-white/5">
+              <div class="bg-[#202c33] rounded-lg px-3 py-1.5 flex items-center gap-2 text-xs text-slate-400">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Buscar o iniciar chat</span>
+              </div>
+            </div>
+
+            <!-- Chat Contacts List -->
+            <div class="flex-1 overflow-y-auto">
+              <!-- Active Chat: Andrés Romero -->
+              <div class="flex items-center gap-3 p-3 bg-[#2a3942] border-b border-white/5 cursor-pointer">
+                <div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#00a884] shrink-0">
+                  <img src="./ANDRES.png" alt="Andrés Romero" class="w-full h-full object-cover">
+                  <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#00a884] border-2 border-[#111b21]"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-white text-xs truncate">Andrés Romero</span>
+                    <span class="text-[10px] text-[#00a884] font-semibold">10:43</span>
+                  </div>
+                  <div class="flex items-center justify-between mt-0.5">
+                    <span class="text-[11px] text-slate-300 truncate">en línea • WhatsApp Oficial</span>
+                    <span class="w-4 h-4 rounded-full bg-[#00a884] text-white text-[9px] font-bold flex items-center justify-center">1</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary Chat: Grupo VIP -->
+              <div class="flex items-center gap-3 p-3 hover:bg-[#202c33] border-b border-white/5 cursor-pointer transition-colors opacity-75">
+                <div class="w-11 h-11 rounded-full bg-[#00a884]/20 border border-[#00a884]/40 flex items-center justify-center text-white shrink-0 font-bold text-sm">
+                  MSL
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-white text-xs truncate">Grupo VIP • Mundo Sin Límites</span>
+                    <span class="text-[10px] text-slate-400">Ayer</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 truncate mt-0.5">Andrés: Acceso listo para el 24 de Agosto...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Main Chat Window (Full Screen on Mobile) -->
+          <div class="flex-1 flex flex-col bg-[#0b141a] min-w-0">
+            
+            <!-- Chat Conversation Header -->
+            <div class="bg-[#202c33] px-4 py-3 border-b border-white/5 flex items-center justify-between shrink-0">
+              <div class="flex items-center gap-3">
+                <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#00a884] shrink-0">
+                  <img src="./ANDRES.png" alt="Andrés Romero" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-white flex items-center gap-1.5">
+                    <span>Andrés Romero</span>
+                    <span class="text-[9.5px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-full font-medium">✓ Mentor</span>
+                  </div>
+                  <div class="text-xs text-emerald-400 font-medium">en línea • WhatsApp (+56 9 2614 2489)</div>
+                </div>
+              </div>
+
+              <!-- Action icons -->
+              <div class="flex items-center gap-3 text-slate-400">
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+                <svg class="w-4 h-4 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              </div>
+            </div>
+
+            <!-- Chat Conversation Messages (With authentic WhatsApp Wallpaper Pattern) -->
+            <div class="p-4 sm:p-6 flex flex-col gap-3.5 min-h-[350px] sm:min-h-[420px] max-h-[500px] overflow-y-auto whatsapp-bg-pattern custom-scrollbar flex-1" id="interactiveChatMessages">
+              <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- Input Bar (User writes custom text) -->
+            <div class="bg-[#202c33] p-3 sm:p-3.5 border-t border-white/5 flex items-center gap-2 sm:gap-3 shrink-0">
+              <div class="hidden sm:flex items-center gap-2 text-slate-400">
+                <svg class="w-5 h-5 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                <svg class="w-5 h-5 hover:text-white cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </div>
+              <input type="text" 
+                     id="interactiveChatInput" 
+                     placeholder="Escribe un mensaje aquí..." 
+                     class="flex-1 bg-[#2a3942] text-white text-xs sm:text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#00a884] placeholder-slate-400"
+                     autocomplete="off">
+              <button type="button" 
+                      id="interactiveChatSendBtn" 
+                      class="w-11 h-11 bg-[#00a884] hover:bg-[#009070] text-white rounded-xl flex items-center justify-center transition-transform active:scale-95 shadow-lg shrink-0"
+                      aria-label="Enviar mensaje">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
