@@ -945,6 +945,10 @@
           <button type="button" onclick="openModal('disclaimerModal')" class="hover:text-white transition-colors duration-300" data-cms="footer.disclaimer_link">
             Descargo de Responsabilidad
           </button>
+          <a href="admin.html" class="hover:text-brandorange-accent transition-colors duration-300 flex items-center gap-1.5 text-slate-500">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Modo Admin</span>
+          </a>
         </div>
       </div>
 
@@ -1845,6 +1849,58 @@
       }
       if (e.target === disclaimerModal) {
         closeModal('disclaimerModal');
+      }
+    });
+
+    // 8. CMS REAL-TIME DATA SYNCHRONIZATION
+    (function initLandingCMS() {
+      const stored = localStorage.getItem('msl_landing_cms_data');
+      if (!stored) return;
+
+      try {
+        const data = JSON.parse(stored);
+        
+        function getNested(obj, path) {
+          return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
+        }
+
+        // Apply data to data-cms elements
+        document.querySelectorAll('[data-cms]').forEach(el => {
+          const path = el.dataset.cms;
+          const val = getNested(data, path);
+          if (val !== undefined && val !== null && val !== '') {
+            if (path.includes('title') || path.includes('desc') || path.includes('heading')) {
+              el.innerHTML = val;
+            } else {
+              el.textContent = val;
+            }
+          }
+        });
+
+        // WhatsApp number update
+        if (data.brand && data.brand.phone_number) {
+          const num = data.brand.phone_number;
+          document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+            a.href = a.href.replace(/wa\.me\/\d+/, `wa.me/${num}`);
+          });
+        }
+
+        // Video URL update
+        if (data.videohero && data.videohero.video_url) {
+          const vid = document.querySelector('#video-pill video');
+          if (vid && vid.src !== data.videohero.video_url) {
+            vid.src = data.videohero.video_url;
+          }
+        }
+      } catch(e) {
+        console.error('Error sincronizando CMS:', e);
+      }
+    })();
+
+    // Keyboard shortcut for Admin Mode: Ctrl + Shift + A
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        window.location.href = 'admin.html';
       }
     });
   </script>
