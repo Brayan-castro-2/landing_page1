@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración — Mundo Sin Límites</title>
+  <title>Panel de Administración — Social Business Shark</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,8 @@
     .btn-brand { background: linear-gradient(135deg, #ff5f1a, #ff9142); color: #fff; font-weight: 700; border: none; border-radius: 10px; }
     .btn-brand:hover { opacity: 0.95; color: #fff; }
     .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111422; border-top: 1px solid rgba(255,255,255,0.1); padding: 14px 24px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
-    .class-entry { background: #0b0d18; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+    .item-entry { background: #0b0d18; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+    .img-preview-box { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); }
   </style>
 </head>
 <body>
@@ -34,7 +35,7 @@
             <i class="bi bi-shield-lock" style="font-size: 1.8rem; color: #ff9142;"></i>
           </div>
           <h4 class="fw-bold text-white">Modo Administrador</h4>
-          <p class="text-secondary small">Mundo Sin Límites — Panel de Edición</p>
+          <p class="text-secondary small">Social Business Shark — Panel de Edición</p>
         </div>
         <div class="mb-3">
           <label class="form-label">Contraseña de Acceso</label>
@@ -44,21 +45,17 @@
         <button id="loginBtn" class="btn btn-brand w-100 btn-lg">
           <i class="bi bi-box-arrow-in-right me-2"></i>Entrar al Panel
         </button>
-        <div class="text-center mt-3">
-          <a href="index.html" class="text-secondary small text-decoration-none"><i class="bi bi-arrow-left me-1"></i>Volver a la Landing</a>
-        </div>
       </div>
     </div>
   </div>
 
   <!-- ═══ PANEL DE CONTROL ═══ -->
   <div id="adminPanel" class="admin-panel">
-    <!-- Navbar -->
     <nav class="navbar navbar-dark" style="background: #111422; border-bottom: 1px solid rgba(255,255,255,0.08);">
       <div class="container">
         <span class="navbar-brand fw-bold text-white d-flex align-items-center gap-2">
           <i class="bi bi-sliders2 text-warning" style="color: #ff9142 !important;"></i>
-          <span>CMS • Mundo Sin Límites</span>
+          <span>CMS • Social Business Shark</span>
         </span>
         <div class="d-flex align-items-center gap-2">
           <a href="index.html" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-eye me-1"></i>Ver Landing</a>
@@ -72,7 +69,7 @@
 
     <div class="container py-4" style="padding-bottom: 140px !important;">
 
-      <!-- 1. INFORMACIÓN DE MARCA Y WHATSAPP -->
+      <!-- 1. INFORMACIÓN DE MARCA -->
       <div class="section-card">
         <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBrand">
           <span><i class="bi bi-whatsapp me-2 text-success"></i>1. Marca, WhatsApp y Contacto</span>
@@ -86,7 +83,7 @@
                 <input type="text" class="form-control" data-cms-bind="brand.name">
               </div>
               <div class="col-md-6">
-                <label class="form-label">Número de WhatsApp (con código de país, sin espacios)</label>
+                <label class="form-label">Número de WhatsApp (código de país, sin espacios)</label>
                 <input type="text" class="form-control" data-cms-bind="brand.phone_number" placeholder="56926142489">
               </div>
               <div class="col-md-6">
@@ -95,7 +92,17 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Nombre del Mentor / Expositor</label>
-                <input type="text" class="form-control" data-cms-bind="brand.mentor_name" placeholder="Andrés Romero">
+                <input type="text" class="form-control" data-cms-bind="brand.mentor_name" placeholder="Andrés González">
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">Foto de Perfil del Mentor (Avatar WhatsApp / Hero)</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" data-cms-bind="brand.avatar_img" placeholder="./IMG_4803.jpg">
+                  <label class="btn btn-outline-secondary mb-0">
+                    <i class="bi bi-folder2-open"></i>
+                    <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'brand.avatar_img')">
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -118,29 +125,21 @@
               <div class="col-12">
                 <label class="form-label">Título Principal (H1)</label>
                 <textarea class="form-control" rows="3" data-cms-bind="hero.title"></textarea>
-                <small class="text-secondary">Puedes usar etiquetas HTML simples si deseas saltos de línea.</small>
+                <small class="text-secondary">Admite etiquetas HTML para estilos y colores.</small>
               </div>
               <div class="col-12">
                 <label class="form-label">Subtítulo Descriptivo</label>
                 <textarea class="form-control" rows="3" data-cms-bind="hero.subtitle"></textarea>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Texto del Botón Principal</label>
-                <input type="text" class="form-control" data-cms-bind="hero.cta">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Mensaje Prefill de WhatsApp</label>
-                <input type="text" class="form-control" data-cms-bind="hero.wa_message">
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 3. TEMARIO DE LAS 4 CLASES -->
+      <!-- 3. TEMARIO DE LOS 4 MÓDULOS -->
       <div class="section-card">
         <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secTemario">
-          <span><i class="bi bi-journal-text me-2 text-primary"></i>3. Temario de las 4 Clases</span>
+          <span><i class="bi bi-journal-text me-2 text-primary"></i>3. Temario de los 4 Módulos (Fotos 9:16)</span>
           <i class="bi bi-chevron-down"></i>
         </div>
         <div id="secTemario" class="collapse">
@@ -160,44 +159,76 @@
               </div>
             </div>
 
-            <h6 class="fw-bold text-warning mb-3">Clases Individuales:</h6>
+            <h6 class="fw-bold text-warning mb-3">Módulos Individuales:</h6>
             
-            <!-- Clase 1 -->
-            <div class="class-entry">
-              <h6 class="text-white fw-bold mb-2">Clase 1</h6>
+            <div class="item-entry">
+              <h6 class="text-white fw-bold mb-2">Módulo 01</h6>
               <div class="row g-2">
                 <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.0.title"></div>
-                <div class="col-md-6"><label class="form-label">Imagen (URL)</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.0.img"></div>
+                <div class="col-md-6">
+                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" data-cms-bind="clases.0.img">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i>
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.0.img')">
+                    </label>
+                  </div>
+                </div>
                 <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.0.desc"></textarea></div>
               </div>
             </div>
 
-            <!-- Clase 2 -->
-            <div class="class-entry">
-              <h6 class="text-white fw-bold mb-2">Clase 2</h6>
+            <div class="item-entry">
+              <h6 class="text-white fw-bold mb-2">Módulo 02</h6>
               <div class="row g-2">
                 <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.1.title"></div>
-                <div class="col-md-6"><label class="form-label">Imagen (URL)</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.1.img"></div>
+                <div class="col-md-6">
+                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" data-cms-bind="clases.1.img">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i>
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.1.img')">
+                    </label>
+                  </div>
+                </div>
                 <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.1.desc"></textarea></div>
               </div>
             </div>
 
-            <!-- Clase 3 -->
-            <div class="class-entry">
-              <h6 class="text-white fw-bold mb-2">Clase 3</h6>
+            <div class="item-entry">
+              <h6 class="text-white fw-bold mb-2">Módulo 03</h6>
               <div class="row g-2">
                 <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.2.title"></div>
-                <div class="col-md-6"><label class="form-label">Imagen (URL)</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.2.img"></div>
+                <div class="col-md-6">
+                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" data-cms-bind="clases.2.img">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i>
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.2.img')">
+                    </label>
+                  </div>
+                </div>
                 <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.2.desc"></textarea></div>
               </div>
             </div>
 
-            <!-- Clase 4 -->
-            <div class="class-entry">
-              <h6 class="text-white fw-bold mb-2">Clase 4</h6>
+            <div class="item-entry">
+              <h6 class="text-white fw-bold mb-2">Módulo 04</h6>
               <div class="row g-2">
                 <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.3.title"></div>
-                <div class="col-md-6"><label class="form-label">Imagen (URL)</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.3.img"></div>
+                <div class="col-md-6">
+                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" data-cms-bind="clases.3.img">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i>
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.3.img')">
+                    </label>
+                  </div>
+                </div>
                 <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.3.desc"></textarea></div>
               </div>
             </div>
@@ -205,382 +236,225 @@
         </div>
       </div>
 
-      <!-- 4. SCROLL ANIMADO (VIDEO HERO) -->
+      <!-- 4. GALERÍA -->
       <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secVideoHero">
-          <span><i class="bi bi-camera-video me-2 text-danger"></i>4. Scroll Animado (Video y Tipografía Cinética)</span>
+        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secGaleria">
+          <span><i class="bi bi-images me-2 text-info"></i>4. Galería de Experiencias (6 Fotos)</span>
           <i class="bi bi-chevron-down"></i>
         </div>
-        <div id="secVideoHero" class="collapse">
+        <div id="secGaleria" class="collapse">
           <div class="card-body">
-            <div class="row g-3">
-              <div class="col-md-4">
-                <label class="form-label">Palabra Superior (Top)</label>
-                <input type="text" class="form-control" data-cms-bind="videohero.top_word">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Palabra Lateral (Right)</label>
-                <input type="text" class="form-control" data-cms-bind="videohero.right_word">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Palabra Inferior (Bottom / Cursiva)</label>
-                <input type="text" class="form-control" data-cms-bind="videohero.bottom_word">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Ruta o URL del Video (MP4)</label>
-                <input type="text" class="form-control" data-cms-bind="videohero.video_url" placeholder="./15126000-uhd_2560_1440_50fps.mp4">
-                <small class="text-secondary">Escribe la ruta del archivo (ej: <code>./mi_video.mp4</code>) o una URL externa.</small>
-              </div>
-              <div class="col-12">
-                <label class="form-label">— O sube un nuevo video directamente —</label>
-                <div class="d-flex align-items-center gap-3 flex-wrap">
-                  <label id="videoUploadLabel" class="btn btn-outline-danger btn-sm mb-0" style="cursor:pointer;">
-                    <i class="bi bi-cloud-upload me-1"></i>Seleccionar Video MP4
-                    <input type="file" id="videoFileInput" accept="video/mp4,video/*" style="display:none;">
-                  </label>
-                  <span id="videoFileName" class="text-secondary small">Ningún archivo seleccionado</span>
-                </div>
-                <div id="videoPreviewWrap" class="mt-3" style="display:none;">
-                  <video id="videoPreview" controls style="max-width:100%; max-height:180px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);"></video>
-                </div>
-                <small class="text-warning d-block mt-1"><i class="bi bi-info-circle me-1"></i>Al subir un video, se guardará como base64 en localStorage. Para archivos grandes (>50MB) usa la ruta directa.</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4b. TEMPORIZADOR DE CUENTA REGRESIVA -->
-      <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secCountdown">
-          <span><i class="bi bi-hourglass-split me-2 text-warning"></i>4b. Temporizador de Cuenta Regresiva</span>
-          <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="secCountdown" class="collapse">
-          <div class="card-body">
-            <p class="text-secondary small mb-3">Define el tiempo exacto de duración del temporizador. Al guardar, el contador se reiniciará desde estos valores.</p>
-            <div class="row g-3">
-              <div class="col-md-3">
-                <label class="form-label">Días</label>
-                <input type="number" class="form-control" id="countdown_days" min="0" max="30" placeholder="3" data-cms-bind="countdown.days_duration">
-              </div>
-              <div class="col-md-3">
-                <label class="form-label">Horas</label>
-                <input type="number" class="form-control" id="countdown_hours" min="0" max="23" placeholder="4" data-cms-bind="countdown.hours_duration">
-              </div>
-              <div class="col-md-3">
-                <label class="form-label">Minutos</label>
-                <input type="number" class="form-control" id="countdown_minutes" min="0" max="59" placeholder="20" data-cms-bind="countdown.minutes_duration">
-              </div>
-              <div class="col-md-3">
-                <label class="form-label">Segundos</label>
-                <input type="number" class="form-control" id="countdown_seconds" min="0" max="59" placeholder="0" data-cms-bind="countdown.seconds_duration">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Texto de la Etiqueta (Label Superior)</label>
-                <input type="text" class="form-control" data-cms-bind="countdown.label" placeholder="EL ACCESO GRATUITO EXPIRA EN:">
-              </div>
-              <div class="col-12">
-                <div class="alert" style="background: rgba(255,95,26,0.1); border: 1px solid rgba(255,95,26,0.3); border-radius: 10px; padding: 12px; color: #ffa563;">
-                  <i class="bi bi-arrow-repeat me-2"></i>
-                  <strong>Al guardar y publicar</strong>, el temporizador de la landing se reiniciará automáticamente desde los valores ingresados aquí.
-                  <button id="resetCountdownBtn" class="btn btn-sm btn-outline-warning ms-3">
-                    <i class="bi bi-arrow-clockwise me-1"></i>Reiniciar Ahora
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. CHAT INTERACTIVO DE WHATSAPP -->
-      <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secChat">
-          <span><i class="bi bi-chat-dots me-2 text-info"></i>5. Chat Interactivo de WhatsApp</span>
-          <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="secChat" class="collapse">
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label">Encabezado de la Sección</label>
-                <input type="text" class="form-control" data-cms-bind="chat.heading">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Mensaje de Saludo Inicial de Andrés</label>
-                <textarea class="form-control" rows="2" data-cms-bind="chat.welcome_msg"></textarea>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Texto Opción 1</label>
-                <input type="text" class="form-control" data-cms-bind="chat.opt1_label">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Texto Opción 2</label>
-                <input type="text" class="form-control" data-cms-bind="chat.opt2_label">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Texto Opción 3</label>
-                <input type="text" class="form-control" data-cms-bind="chat.opt3_label">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. LLAMADO A LA ACCIÓN FINAL -->
-      <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secFinal">
-          <span><i class="bi bi-lightning-charge me-2 text-warning"></i>6. Llamado a la Acción Final</span>
-          <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="secFinal" class="collapse">
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label">Título Final</label>
-                <input type="text" class="form-control" data-cms-bind="final.title">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Descripción Final</label>
-                <textarea class="form-control" rows="2" data-cms-bind="final.desc"></textarea>
-              </div>
+            <div class="row g-3" id="galeriaInputsContainer">
+              <!-- Foto 1 -->
               <div class="col-md-6">
-                <label class="form-label">Texto del Botón</label>
-                <input type="text" class="form-control" data-cms-bind="final.cta">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 01</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.0.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.0.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.0.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.0.desc" placeholder="Descripción"></textarea>
+                </div>
               </div>
+              <!-- Foto 2 -->
               <div class="col-md-6">
-                <label class="form-label">Frase / Cita de Andrés</label>
-                <input type="text" class="form-control" data-cms-bind="final.quote">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 02</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.1.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.1.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.1.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.1.desc" placeholder="Descripción"></textarea>
+                </div>
+              </div>
+              <!-- Foto 3 -->
+              <div class="col-md-6">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 03</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.2.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.2.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.2.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.2.desc" placeholder="Descripción"></textarea>
+                </div>
+              </div>
+              <!-- Foto 4 -->
+              <div class="col-md-6">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 04</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.3.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.3.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.3.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.3.desc" placeholder="Descripción"></textarea>
+                </div>
+              </div>
+              <!-- Foto 5 -->
+              <div class="col-md-6">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 05</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.4.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.4.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.4.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.4.desc" placeholder="Descripción"></textarea>
+                </div>
+              </div>
+              <!-- Foto 6 -->
+              <div class="col-md-6">
+                <div class="item-entry">
+                  <h6 class="text-warning fw-bold small">Foto 06</h6>
+                  <label class="form-label">Imagen</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="gallery.5.src">
+                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.5.src')"></label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.5.title" placeholder="Título">
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.5.desc" placeholder="Descripción"></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- 5. BIO -->
+      <div class="section-card">
+        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBio">
+          <span><i class="bi bi-person-badge me-2 text-warning"></i>5. Sección ¿Quién soy?</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secBio" class="collapse">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label">Foto de Autoridad</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" data-cms-bind="bio.photo">
+                  <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'bio.photo')"></label>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Biografía (HTML)</label>
+                <textarea class="form-control" rows="6" data-cms-bind="bio.description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
 
-    <!-- ═══ BARRA INFERIOR DE GUARDAR ═══ -->
     <div class="save-bar">
-      <div>
-        <span id="saveStatus" class="small text-secondary">No hay cambios pendientes</span>
-      </div>
-      <button id="saveChangesBtn" class="btn btn-brand btn-lg px-4">
-        <i class="bi bi-check-circle me-2"></i>Guardar y Publicar Cambios
-      </button>
+      <div><span id="saveStatus" class="small text-secondary">No hay cambios pendientes</span></div>
+      <button id="saveChangesBtn" class="btn btn-brand btn-lg px-4"><i class="bi bi-check-circle me-2"></i>Guardar y Publicar</button>
     </div>
   </div>
 
-  <!-- Modal Oculto para Importar JSON -->
   <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
-
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     const DEFAULT_CMS_DATA = {
-      brand: {
-        name: "MUNDO SIN LÍMITES",
-        phone_number: "56926142489",
-        phone_display: "+56 9 2614 2489",
-        mentor_name: "Andrés Romero"
-      },
-      hero: {
-        eyebrow: "100% EN VIVO · DEL 24 AL 27 DE AGOSTO",
-        title: "El Mundo es Demasiado Grande <br><span class=\"bg-gradient-to-r from-brandblue-light via-brandblue-cyan to-brandblue-light bg-clip-text text-transparent\">Para Quedarte</span> <br>en el Mismo Lugar.",
-        subtitle: "Viaja en cruceros de lujo y hoteles 5 estrellas a precio de socio. Construye un negocio real y pasivo en turismo digital. Sin jefe, sin horarios rígidos y sin pedir permiso a nadie.",
-        cta: "Quiero el Acceso VIP",
-        wa_message: "Hola Andrés, quiero el Acceso VIP a las 4 clases en vivo"
-      },
-      temario: {
-        subtitle: "CONTENIDO DEL ENTRENAMIENTO",
-        title: "Entrenamiento Gratuito en 4 Clases",
-        description: "Haz clic en cualquiera de las clases para solicitar tu acceso directo por WhatsApp (+56 9 2614 2489)."
-      },
+      brand: { name: "SOCIAL BUSINESS SHARK", phone_number: "56926142489", phone_display: "+56 9 2614 2489", mentor_name: "Andrés González", avatar_img: "./IMG_4803.jpg" },
+      hero: { eyebrow: "ENTRENAMIENTO ONLINE GRATUITO", title: "CÓMO CONSTRUIR UN NEGOCIO DIGITAL", subtitle: "Aprende el método..." },
+      temario: { subtitle: "CONTENIDO", title: "Módulos", description: "Descripción" },
       clases: [
-        {
-          title: "Por qué ahora es el mejor momento",
-          img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=600&auto=format&fit=crop&q=80",
-          desc: "Te muestro por qué el modelo de membresías ya conquistó a Netflix, Spotify y Amazon, y cómo puedes entrar a este mercado de 9 billones de dólares sin inventarios."
-        },
-        {
-          title: "Cómo funciona el club mayorista",
-          img: "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600&auto=format&fit=crop&q=80",
-          desc: "Descubre cómo miembros de todo el mundo viajan en cruceros 5 estrellas y se hospedan en resorts de lujo pagando hasta un 50% menos o viajando gratis."
-        },
-        {
-          title: "El sistema de comisiones diarias y residuales",
-          img: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&auto=format&fit=crop&q=80",
-          desc: "El paso a paso para generar ingresos desde tu celular recomendando experiencias que todo el mundo desea. Sin experiencia previa en ventas."
-        },
-        {
-          title: "Tu plan de despegue en 30 días",
-          img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop&q=80",
-          desc: "Estrategia exacta para lanzar tu negocio digital en tus horas libres, recuperar tu inversión y calificar a tus primeros viajes patrocinados."
-        }
+        { title: "El fin de cambiar tiempo por dinero", img: "./IMG_4803.jpg", desc: "Descripción 1" },
+        { title: "El Método Social Business Shark paso a paso", img: "./IMG_4349.jpg", desc: "Descripción 2" },
+        { title: "Marca personal", img: "./IMG_2704.jpg", desc: "Descripción 3" },
+        { title: "Hoja de ruta", img: "./IMG_4369.jpg", desc: "Descripción 4" }
       ],
-      videohero: {
-        top_word: "crea tu",
-        right_word: "forma de",
-        bottom_word: "vivir",
-        video_url: "./15126000-uhd_2560_1440_50fps.mp4"
-      },
-      countdown: {
-        days_duration: 3,
-        hours_duration: 4,
-        minutes_duration: 20,
-        seconds_duration: 0,
-        label: "EL ACCESO GRATUITO EXPIRA EN:"
-      },
-      chat: {
-        heading: "¿Listo para viajar el mundo y ganar mientras lo haces?",
-        welcome_msg: "Hola, soy Andrés Romero, fundador de Mundo Sin Límites. ¿Cuál es tu meta principal hoy?",
-        opt1_label: "Viajar en cruceros y hoteles 5 estrellas con tarifas de socio",
-        opt2_label: "Generar ingresos en turismo digital sin dejar mi trabajo actual",
-        opt3_label: "Acceder gratis a las 4 Clases en Vivo"
-      },
-      final: {
-        title: "Tu próximo destino ya tiene precio de socio.",
-        desc: "Un solo mensaje. Únete hoy al grupo de WhatsApp y descubre el plan exacto para viajar gratis o con descuentos VIP y comisionar a diario.",
-        cta: "Quiero el Acceso VIP",
-        quote: "\"Decidir que te mereces algo mejor es el único paso que nadie más puede dar por ti.\" — Andrés Romero"
-      }
+      gallery: Array(6).fill({ src: '', title: '', desc: '' }),
+      bio: { photo: "", description: "" }
     };
 
     let siteData = {};
 
     function getNested(obj, path) {
-      return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : '', obj);
+      return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
     }
 
     function setNested(obj, path, value) {
       const parts = path.split('.');
       let cur = obj;
       for (let i = 0; i < parts.length - 1; i++) {
-        if (!cur[parts[i]]) cur[parts[i]] = {};
-        cur = cur[parts[i]];
+        const p = parts[i];
+        if (!cur[p]) cur[p] = !isNaN(parts[i+1]) ? [] : {};
+        cur = cur[p];
       }
       cur[parts[parts.length - 1]] = value;
     }
 
     function loadData() {
       const stored = localStorage.getItem('msl_landing_cms_data');
-      if (stored) {
-        try {
-          siteData = JSON.parse(stored);
-        } catch(e) {
-          siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
-        }
-      } else {
-        siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
-      }
+      siteData = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
+      populateForm();
     }
 
-    function populateInputs() {
+    function populateForm() {
       document.querySelectorAll('[data-cms-bind]').forEach(input => {
-        const path = input.dataset.cmsBind;
-        const val = getNested(siteData, path);
-        input.value = val !== undefined ? val : '';
+        const val = getNested(siteData, input.dataset.cmsBind);
+        if (val !== undefined) input.value = val;
       });
     }
 
-    function bindEvents() {
+    function readForm() {
       document.querySelectorAll('[data-cms-bind]').forEach(input => {
-        input.addEventListener('input', () => {
-          const path = input.dataset.cmsBind;
-          setNested(siteData, path, input.value);
-          document.getElementById('saveStatus').textContent = '⚠️ Hay cambios sin guardar';
-          document.getElementById('saveStatus').className = 'small text-warning';
-        });
+        setNested(siteData, input.dataset.cmsBind, input.value);
       });
     }
 
-    // Login logic
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const pass = document.getElementById('loginPassword').value.trim();
-      if (pass === 'andres2026' || pass === 'admin') {
-        document.getElementById('loginScreen').style.display = 'none';
-        document.getElementById('adminPanel').style.display = 'block';
-        sessionStorage.setItem('msl_admin_auth', 'true');
-        loadData();
-        populateInputs();
-        bindEvents();
-      } else {
-        const err = document.getElementById('loginError');
-        err.textContent = 'Contraseña incorrecta. Intenta nuevamente.';
-        err.classList.remove('d-none');
-      }
-    });
-
-    document.getElementById('loginPassword').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') document.getElementById('loginBtn').click();
-    });
-
-    // Auto-login if session active
-    if (sessionStorage.getItem('msl_admin_auth') === 'true') {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('adminPanel').style.display = 'block';
-      loadData();
-      populateInputs();
-      bindEvents();
-    }
-
-    // Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      sessionStorage.removeItem('msl_admin_auth');
-      window.location.reload();
-    });
-
-    // Save changes
-    document.getElementById('saveChangesBtn').addEventListener('click', () => {
-      localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-      const status = document.getElementById('saveStatus');
-      status.textContent = '✅ ¡Cambios guardados y publicados con éxito!';
-      status.className = 'small text-success fw-bold';
-      setTimeout(() => {
-        status.textContent = 'Cambios sincronizados';
-        status.className = 'small text-secondary';
-      }, 4000);
-    });
-
-    // Export JSON
-    document.getElementById('exportJsonBtn').addEventListener('click', () => {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(siteData, null, 2));
-      const dlAnchorElem = document.createElement('a');
-      dlAnchorElem.setAttribute("href", dataStr);
-      dlAnchorElem.setAttribute("download", "mundo_sin_limites_cms_backup.json");
-      dlAnchorElem.click();
-    });
-
-    // Import JSON
-    document.getElementById('importJsonBtn').addEventListener('click', () => {
-      document.getElementById('jsonFileInput').click();
-    });
-
-    document.getElementById('jsonFileInput').addEventListener('change', (e) => {
-      const file = e.target.files[0];
+    function handleImageFile(input, path) {
+      const file = input.files[0];
       if (!file) return;
       const reader = new FileReader();
-      reader.onload = (evt) => {
-        try {
-          const imported = JSON.parse(evt.target.result);
-          siteData = imported;
-          localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-          populateInputs();
-          alert('Datos importados correctamente.');
-        } catch(err) {
-          alert('Error al leer el archivo JSON.');
+      reader.onload = (e) => {
+        const targetInput = document.querySelector(`[data-cms-bind="${path}"]`);
+        if (targetInput) {
+          targetInput.value = e.target.result;
+          setNested(siteData, path, e.target.result);
+          markChanged();
         }
       };
-      reader.readAsText(file);
+      reader.readAsDataURL(file);
+    }
+
+    function markChanged() {
+      const status = document.getElementById('saveStatus');
+      status.textContent = '⚠️ Hay cambios sin guardar';
+      status.className = 'small text-warning fw-bold';
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      if (document.getElementById('loginPassword').value === 'andres2026') {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        loadData();
+      } else alert('Contraseña incorrecta');
     });
 
-    // Reset Defaults
+    document.getElementById('saveChangesBtn').addEventListener('click', () => {
+      readForm();
+      localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
+      document.getElementById('saveStatus').textContent = '✅ ¡Guardado!';
+      document.getElementById('saveStatus').className = 'small text-success fw-bold';
+    });
+
     document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
-      if (confirm('¿Estás seguro de restablecer todos los textos y datos a los valores originales?')) {
+      if (confirm('¿Seguro?')) {
         siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
         localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-        populateInputs();
         alert('Datos restablecidos.');
       }
     });
