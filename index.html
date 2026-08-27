@@ -2246,6 +2246,10 @@
           const path = imgEl.dataset.cmsImg;
           const val = getNested(data, path);
           if (val && typeof val === 'string' && val.trim() !== '') {
+            // Si es una URL vieja de unsplash en los módulos o bio, no sobreescribir la foto real de Andrés
+            if (val.includes('unsplash.com') || val.includes('images.unsplash')) {
+              return;
+            }
             imgEl.src = val;
           }
         });
