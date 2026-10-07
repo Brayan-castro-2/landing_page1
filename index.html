@@ -189,76 +189,78 @@
     
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" style="position: relative; z-index: 10; padding-top: 4rem; padding-bottom: 4rem;">
       
-      <!-- Left Column: Marketing Copy (Rocket Pitch Mode) -->
+      <!-- Left Column: Marketing Copy (Rocket Pitch Mode con Rotador Dinámico) -->
       <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
         
-        <!-- Live Alert Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-brandorange-500/15 text-brandorange-accent border border-brandorange-500/30 uppercase tracking-widest mb-4 shadow-[0_0_20px_rgba(255,95,26,0.2)]"
-             data-cms="hero.eyebrow">
-          <span class="w-2 h-2 rounded-full bg-brandorange-500 animate-ping"></span>
+        <!-- Live Persuasion Urgency Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black bg-brandorange-500/15 text-brandorange-accent border border-brandorange-500/30 uppercase tracking-widest mb-4 shadow-[0_0_20px_rgba(255,95,26,0.2)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-brandorange-500 animate-ping"></span>
           <span>ENTRENAMIENTO ONLINE GRATUITO · 4 CLASES</span>
+          <span class="hidden sm:inline-block text-white/40">|</span>
+          <span class="hidden sm:inline-block text-white/80 font-bold lowercase text-[11px]">🔥 94% de cupos tomados</span>
         </div>
 
-        <!-- Magnetic Rocket Headline -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-display font-black text-white tracking-tight leading-[1.12] mb-4 uppercase"
-            data-cms="hero.title">
+        <!-- Magnetic Rocket Headline con Rotador Dinámico -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-display font-black text-white tracking-tight leading-[1.14] mb-3 uppercase">
           DEJA DE CAMBIAR TU TIEMPO POR DINERO.<br>
-          <span class="bg-gradient-to-r from-brandblue-light via-brandblue-cyan to-brandorange-accent bg-clip-text text-transparent">
-            CONSTRUYE UN NEGOCIO DIGITAL EN DÓLARES.
+          <span class="text-slate-300 font-extrabold text-2xl sm:text-3xl lg:text-[34px] block mt-1">
+            CONSTRUYE UN NEGOCIO DIGITAL QUE:
+          </span>
+          <span id="hero-rotating-word" class="inline-block bg-gradient-to-r from-brandblue-light via-brandblue-cyan to-brandorange-accent bg-clip-text text-transparent font-black tracking-normal transition-all duration-300 min-h-[1.2em] transform">
+            GENERE EN DÓLARES $USD
           </span>
         </h1>
 
-        <!-- One-Liner Subtitle -->
-        <p class="text-base sm:text-lg text-slate-300 max-w-xl font-medium leading-relaxed mb-6"
-           data-cms="hero.subtitle">
-          Descubre el sistema exacto para crear una nueva fuente de ingresos en moneda dura <strong class="text-white">en paralelo a tu trabajo actual</strong>, sin descuidar lo que hoy haces.
+        <!-- Ultra-Condensed One-Liner Subtitle -->
+        <p class="text-sm sm:text-base text-slate-300 max-w-xl font-medium leading-relaxed mb-5">
+          Aprende el sistema paso a paso para crear una nueva fuente de ingresos en moneda dura <strong class="text-white">en paralelo a tu trabajo actual</strong>, sin horarios fijos.
         </p>
 
         <!-- 3 High-Impact Visual Scanning Pills -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full max-w-xl mb-7">
-          <div class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-            <span class="text-base">⚡</span>
-            <span class="text-xs font-bold text-slate-200">100% en Paralelo</span>
+        <div class="grid grid-cols-3 gap-2 w-full max-w-xl mb-6">
+          <div class="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+            <span class="text-sm">⚡</span>
+            <span class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">En Paralelo</span>
           </div>
-          <div class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-            <span class="text-base">💵</span>
-            <span class="text-xs font-bold text-slate-200">Ingresos en $USD</span>
+          <div class="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+            <span class="text-sm">💵</span>
+            <span class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">Ingresos $USD</span>
           </div>
-          <div class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-            <span class="text-base">📲</span>
-            <span class="text-xs font-bold text-slate-200">Desde tu Celular</span>
+          <div class="flex items-center justify-center sm:justify-start gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+            <span class="text-sm">📲</span>
+            <span class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">100% Celular</span>
           </div>
         </div>
 
-        <!-- CTA Principal & Instant WhatsApp Trigger -->
+        <!-- CTA Principal & Instant WhatsApp Trigger con Flecha Animada -->
         <div class="flex flex-col items-center lg:items-start gap-2.5 w-full sm:w-auto mb-6">
           <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20acceder%20al%20entrenamiento%20gratuito%20de%204%20clases"
              target="_blank"
              rel="noopener noreferrer"
-             class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#25D366] via-emerald-500 to-[#128C7E] hover:from-emerald-500 hover:to-[#25D366] text-white font-black text-sm sm:text-base md:text-lg px-7 sm:px-10 py-4 sm:py-5 rounded-2xl shadow-[0_12px_35px_rgba(37,211,102,0.4)] hover:shadow-[0_16px_50px_rgba(37,211,102,0.6)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] active:scale-95 w-full sm:w-auto relative group overflow-hidden tracking-wide uppercase text-center border border-white/20"
-             data-cms="hero.cta">
+             class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#25D366] via-emerald-500 to-[#128C7E] hover:from-emerald-500 hover:to-[#25D366] text-white font-black text-sm sm:text-base md:text-lg px-7 sm:px-10 py-4 sm:py-5 rounded-2xl shadow-[0_12px_35px_rgba(37,211,102,0.4)] hover:shadow-[0_16px_50px_rgba(37,211,102,0.6)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] active:scale-95 w-full sm:w-auto relative group overflow-hidden tracking-wide uppercase text-center border border-white/20">
             <span class="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shine_1s_ease-in-out]"></span>
             <svg class="w-6 h-6 text-white shrink-0 drop-shadow" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.023 14.07 1 11.96 1c-5.45 0-9.88 4.376-9.884 9.807-.002 1.778.474 3.514 1.378 5.081L2.43 21.65l6.09-1.597z"></path>
             </svg>
             <span>QUIERO ACCEDER AL ENTRENAMIENTO</span>
+            <span class="text-xl inline-block transform group-hover:translate-x-1.5 transition-transform">➔</span>
           </a>
           <span class="text-xs text-slate-300 font-bold flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-[#25D366] inline-block animate-ping"></span>
-            Acceso 100% gratuito · Grupo VIP de WhatsApp
+            Acceso 100% gratuito · Grupo VIP de WhatsApp · Sin Spam
           </span>
         </div>
 
-        <!-- Mini Trust Badges -->
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-400 font-medium">
+        <!-- Social Proof Persuasion Counters -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-400 font-medium pt-1">
           <span class="flex items-center gap-1.5 text-slate-300">
             <span class="text-brandorange-accent font-bold">✓</span> 4 Clases en Video
           </span>
           <span class="flex items-center gap-1.5 text-slate-300">
             <span class="text-brandorange-accent font-bold">✓</span> Sin Horarios Fijos
           </span>
-          <span class="flex items-center gap-1.5 text-slate-300">
-            <span class="text-brandorange-accent font-bold">✓</span> Soporte en Directo
+          <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
+            <span>👥 +1.200 Alumnos</span>
           </span>
         </div>
       </div>
@@ -565,22 +567,19 @@
   </section>
 
   <!-- ═══════════════════════════════════════ TEMARIO (4 CLASES GRATUITAS MODO NETFLIX MASTERCLASS) ═══════════════════════════════════════ -->
-  <section class="py-20 bg-brandsoft/40 border-t border-b border-white/5 px-4">
+  <section class="py-20 bg-brandsoft/40 border-t border-b border-white/5 px-4 relative">
     <div class="max-w-6xl mx-auto">
       
-      <!-- Section Title -->
+      <!-- Section Title con Persuasión -->
       <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-black uppercase tracking-widest text-brandblue-cyan bg-brandblue-600/15 border border-brandblue-600/30 px-3.5 py-1.5 rounded-full inline-block"
-              data-cms="temario.subtitle">
-          ENTRENAMIENTO VIP · ACCESO GRATUITO
+        <span class="text-xs font-black uppercase tracking-widest text-brandblue-cyan bg-brandblue-600/15 border border-brandblue-600/30 px-3.5 py-1.5 rounded-full inline-block mb-3 shadow-sm">
+          ENTRENAMIENTO VIP · ACCESO 100% GRATUITO
         </span>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-tight mt-4 mb-3 uppercase"
-            data-cms="temario.title">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-tight uppercase" data-cms="temario.title">
           4 CLASES PARA DESBLOQUEAR TU NEGOCIO DIGITAL
         </h2>
-        <p class="text-slate-400 leading-relaxed text-sm sm:text-base"
-           data-cms="temario.description">
-          Aprende el paso a paso para pasar de cero a facturar en dólares con el método de Andrés González.
+        <p class="text-slate-400 leading-relaxed text-sm sm:text-base mt-2">
+          Pasa el cursor por cada clase para ver la vista previa y únete al grupo de WhatsApp para acceder al material completo.
         </p>
       </div>
 
@@ -591,38 +590,67 @@
         <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20acceder%20a%20la%20Clase%2001:%20Rompe%20el%20Modelo" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.14)] group">
-          <!-- 9:16 Vertical Image Container -->
-          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.18)] group relative overflow-hidden">
+          
+          <!-- 9:16 Vertical Video Preview Container -->
+          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner group">
             <img src="./IMG_4803.jpg" 
                  alt="Módulo 1 - Andrés González" 
                  data-cms-img="clases.0.img"
-                 class="w-full h-full object-cover object-[50%_15%] group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:opacity-30 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="w-12 h-12 rounded-full bg-brandorange-500 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
-                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                 class="w-full h-full object-cover object-[50%_15%] group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-105">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            
+            <!-- Duration Badge Top Right -->
+            <div class="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px] font-mono font-bold text-white flex items-center gap-1 z-10">
+              <span class="w-1.5 h-1.5 rounded-full bg-brandorange-500 animate-pulse"></span>
+              <span>15 MIN</span>
+            </div>
+
+            <!-- Hover Preview Radar & Play Button -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+              <span class="w-14 h-14 rounded-full bg-brandorange-500/90 text-white flex items-center justify-center shadow-[0_0_30px_rgba(255,95,26,0.8)] transform group-hover:scale-110 transition-all duration-300 border border-white/30">
+                <svg class="w-6 h-6 ml-0.5 text-white" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+              <span class="text-[9px] font-black uppercase tracking-widest text-white bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                ▶ VISTA PREVIA
               </span>
             </div>
           </div>
+
           <!-- Content Side -->
           <div class="flex-1 flex flex-col justify-between py-1">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">MÓDULO 01</span>
-                <span class="text-[11px] text-slate-400 font-bold">15 MIN</span>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">
+                  MÓDULO 01
+                </span>
+                <!-- Persuasion Arrow Badge -->
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brandorange-500/15 text-brandorange-accent text-[11px] font-black border border-brandorange-500/30 animate-pulse">
+                  <span>👉 CLIC AQUÍ</span>
+                  <span class="text-xs">➔</span>
+                </span>
               </div>
-              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase" data-cms="clases.0.title">
+
+              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase">
                 ¿CUÁNTO VALE REALMENTE TU TIEMPO?
               </h3>
-              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4" data-cms="clases.0.desc">
+              
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
                 Por qué trabajar más horas nunca te dará libertad financiera y cómo salir de la trampa del tiempo antes de que sea tarde.
               </p>
             </div>
-            <span class="text-xs sm:text-sm font-bold text-brandorange-accent flex items-center gap-1.5 group-hover:translate-x-1 transition-transform mt-auto pt-2">
-              <span>DESBLOQUEAR CLASE 01</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-            </span>
+
+            <!-- Bottom Interactive Button -->
+            <div class="flex items-center justify-between text-xs sm:text-sm font-black text-brandorange-accent mt-auto pt-2 border-t border-white/5">
+              <span class="flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span>
+                <span>DESBLOQUEAR CLASE 01</span>
+              </span>
+              <span class="w-7 h-7 rounded-full bg-brandorange-500/10 flex items-center justify-center group-hover:bg-brandorange-500 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                ➔
+              </span>
+            </div>
           </div>
         </a>
 
@@ -630,38 +658,67 @@
         <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20acceder%20a%20la%20Clase%2002:%20Construye%20en%20Digital" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.14)] group">
-          <!-- 9:16 Vertical Image Container -->
-          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.18)] group relative overflow-hidden">
+          
+          <!-- 9:16 Vertical Video Preview Container -->
+          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner group">
             <img src="./IMG_4349.jpg" 
                  alt="Módulo 2 - Andrés González" 
                  data-cms-img="clases.1.img"
-                 class="w-full h-full object-cover object-[50%_25%] group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:opacity-30 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="w-12 h-12 rounded-full bg-brandorange-500 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
-                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                 class="w-full h-full object-cover object-[50%_25%] group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-105">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            
+            <!-- Duration Badge Top Right -->
+            <div class="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px] font-mono font-bold text-white flex items-center gap-1 z-10">
+              <span class="w-1.5 h-1.5 rounded-full bg-brandorange-500 animate-pulse"></span>
+              <span>18 MIN</span>
+            </div>
+
+            <!-- Hover Preview Radar & Play Button -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+              <span class="w-14 h-14 rounded-full bg-brandorange-500/90 text-white flex items-center justify-center shadow-[0_0_30px_rgba(255,95,26,0.8)] transform group-hover:scale-110 transition-all duration-300 border border-white/30">
+                <svg class="w-6 h-6 ml-0.5 text-white" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+              <span class="text-[9px] font-black uppercase tracking-widest text-white bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                ▶ VISTA PREVIA
               </span>
             </div>
           </div>
+
           <!-- Content Side -->
           <div class="flex-1 flex flex-col justify-between py-1">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">MÓDULO 02</span>
-                <span class="text-[11px] text-slate-400 font-bold">18 MIN</span>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">
+                  MÓDULO 02
+                </span>
+                <!-- Persuasion Arrow Badge -->
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brandorange-500/15 text-brandorange-accent text-[11px] font-black border border-brandorange-500/30 animate-pulse">
+                  <span>👉 CLIC AQUÍ</span>
+                  <span class="text-xs">➔</span>
+                </span>
               </div>
-              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase" data-cms="clases.1.title">
+
+              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase">
                 LA MÁQUINA DE VENTAS DIGITAL
               </h3>
-              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4" data-cms="clases.1.desc">
+              
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
                 El sistema exacto y las habilidades clave detrás de un negocio rentable en redes sociales sin volverte esclavo de las pantallas.
               </p>
             </div>
-            <span class="text-xs sm:text-sm font-bold text-brandorange-accent flex items-center gap-1.5 group-hover:translate-x-1 transition-transform mt-auto pt-2">
-              <span>DESBLOQUEAR CLASE 02</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-            </span>
+
+            <!-- Bottom Interactive Button -->
+            <div class="flex items-center justify-between text-xs sm:text-sm font-black text-brandorange-accent mt-auto pt-2 border-t border-white/5">
+              <span class="flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span>
+                <span>DESBLOQUEAR CLASE 02</span>
+              </span>
+              <span class="w-7 h-7 rounded-full bg-brandorange-500/10 flex items-center justify-center group-hover:bg-brandorange-500 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                ➔
+              </span>
+            </div>
           </div>
         </a>
 
@@ -669,38 +726,67 @@
         <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20acceder%20a%20la%20Clase%2003:%20Descubre%20el%20Veh%C3%ADculo" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.14)] group">
-          <!-- 9:16 Vertical Image Container -->
-          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.18)] group relative overflow-hidden">
+          
+          <!-- 9:16 Vertical Video Preview Container -->
+          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner group">
             <img src="./IMG_2704.jpg" 
                  alt="Módulo 3 - Andrés González Vehículo" 
                  data-cms-img="clases.2.img"
-                 class="w-full h-full object-cover object-[50%_10%] group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:opacity-30 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="w-12 h-12 rounded-full bg-brandorange-500 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
-                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                 class="w-full h-full object-cover object-[50%_10%] group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-105">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            
+            <!-- Duration Badge Top Right -->
+            <div class="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px] font-mono font-bold text-white flex items-center gap-1 z-10">
+              <span class="w-1.5 h-1.5 rounded-full bg-brandorange-500 animate-pulse"></span>
+              <span>20 MIN</span>
+            </div>
+
+            <!-- Hover Preview Radar & Play Button -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+              <span class="w-14 h-14 rounded-full bg-brandorange-500/90 text-white flex items-center justify-center shadow-[0_0_30px_rgba(255,95,26,0.8)] transform group-hover:scale-110 transition-all duration-300 border border-white/30">
+                <svg class="w-6 h-6 ml-0.5 text-white" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+              <span class="text-[9px] font-black uppercase tracking-widest text-white bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                ▶ VISTA PREVIA
               </span>
             </div>
           </div>
+
           <!-- Content Side -->
           <div class="flex-1 flex flex-col justify-between py-1">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">MÓDULO 03</span>
-                <span class="text-[11px] text-slate-400 font-bold">20 MIN</span>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">
+                  MÓDULO 03
+                </span>
+                <!-- Persuasion Arrow Badge -->
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brandorange-500/15 text-brandorange-accent text-[11px] font-black border border-brandorange-500/30 animate-pulse">
+                  <span>👉 CLIC AQUÍ</span>
+                  <span class="text-xs">➔</span>
+                </span>
               </div>
-              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase" data-cms="clases.2.title">
+
+              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase">
                 EL VEHÍCULO: CÓMO SE GENERA EN $USD
               </h3>
-              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4" data-cms="clases.2.desc">
+              
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
                 El modelo de negocio y vehículo global que usamos para facturar en dólares mientras viajamos y creamos experiencias.
               </p>
             </div>
-            <span class="text-xs sm:text-sm font-bold text-brandorange-accent flex items-center gap-1.5 group-hover:translate-x-1 transition-transform mt-auto pt-2">
-              <span>DESBLOQUEAR CLASE 03</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-            </span>
+
+            <!-- Bottom Interactive Button -->
+            <div class="flex items-center justify-between text-xs sm:text-sm font-black text-brandorange-accent mt-auto pt-2 border-t border-white/5">
+              <span class="flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span>
+                <span>DESBLOQUEAR CLASE 03</span>
+              </span>
+              <span class="w-7 h-7 rounded-full bg-brandorange-500/10 flex items-center justify-center group-hover:bg-brandorange-500 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                ➔
+              </span>
+            </div>
           </div>
         </a>
 
@@ -708,38 +794,67 @@
         <a href="https://wa.me/56926142489?text=Hola%20Andr%C3%A9s,%20quiero%20acceder%20a%20la%20Clase%2004:%20Construye%20tu%20Propio%20Camino" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.14)] group">
-          <!-- 9:16 Vertical Image Container -->
-          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+           class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 rounded-3xl bg-brandbg/70 border border-white/10 hover:border-brandorange-500/60 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(255,95,26,0.18)] group relative overflow-hidden">
+          
+          <!-- 9:16 Vertical Video Preview Container -->
+          <div class="relative w-full sm:w-44 md:w-48 lg:w-52 shrink-0 aspect-[9/14] sm:aspect-[9/13] rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner group">
             <img src="./IMG_4369.jpg" 
                  alt="Módulo 4 - Andrés González" 
                  data-cms-img="clases.3.img"
-                 class="w-full h-full object-cover object-[50%_12%] group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:opacity-30 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="w-12 h-12 rounded-full bg-brandorange-500 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
-                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                 class="w-full h-full object-cover object-[50%_12%] group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-105">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            
+            <!-- Duration Badge Top Right -->
+            <div class="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px] font-mono font-bold text-white flex items-center gap-1 z-10">
+              <span class="w-1.5 h-1.5 rounded-full bg-brandorange-500 animate-pulse"></span>
+              <span>25 MIN</span>
+            </div>
+
+            <!-- Hover Preview Radar & Play Button -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+              <span class="w-14 h-14 rounded-full bg-brandorange-500/90 text-white flex items-center justify-center shadow-[0_0_30px_rgba(255,95,26,0.8)] transform group-hover:scale-110 transition-all duration-300 border border-white/30">
+                <svg class="w-6 h-6 ml-0.5 text-white" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+              <span class="text-[9px] font-black uppercase tracking-widest text-white bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                ▶ VISTA PREVIA
               </span>
             </div>
           </div>
+
           <!-- Content Side -->
           <div class="flex-1 flex flex-col justify-between py-1">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">MÓDULO 04</span>
-                <span class="text-[11px] text-slate-400 font-bold">25 MIN</span>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-black text-brandblue-cyan tracking-wider uppercase bg-brandblue-600/15 border border-brandblue-600/30 px-2 py-0.5 rounded-md">
+                  MÓDULO 04
+                </span>
+                <!-- Persuasion Arrow Badge -->
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brandorange-500/15 text-brandorange-accent text-[11px] font-black border border-brandorange-500/30 animate-pulse">
+                  <span>👉 CLIC AQUÍ</span>
+                  <span class="text-xs">➔</span>
+                </span>
               </div>
-              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase" data-cms="clases.3.title">
+
+              <h3 class="text-lg sm:text-xl font-display font-black text-white tracking-tight mb-2 group-hover:text-brandorange-accent transition-colors uppercase">
                 TU PLAN DE ACCIÓN PASO A PASO
               </h3>
-              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4" data-cms="clases.3.desc">
+              
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
                 Cómo arrancar hoy mismo, qué herramientas necesitas y cómo recibir mi acompañamiento directo para construir tu negocio.
               </p>
             </div>
-            <span class="text-xs sm:text-sm font-bold text-brandorange-accent flex items-center gap-1.5 group-hover:translate-x-1 transition-transform mt-auto pt-2">
-              <span>DESBLOQUEAR CLASE 04</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-            </span>
+
+            <!-- Bottom Interactive Button -->
+            <div class="flex items-center justify-between text-xs sm:text-sm font-black text-brandorange-accent mt-auto pt-2 border-t border-white/5">
+              <span class="flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span>
+                <span>DESBLOQUEAR CLASE 04</span>
+              </span>
+              <span class="w-7 h-7 rounded-full bg-brandorange-500/10 flex items-center justify-center group-hover:bg-brandorange-500 group-hover:text-white transition-all transform group-hover:translate-x-1">
+                ➔
+              </span>
+            </div>
           </div>
         </a>
 
@@ -1979,8 +2094,44 @@
       }
     });
 
-    // 8. CMS REAL-TIME DATA SYNCHRONIZATION
+    // 7.1 HERO DYNAMIC ROTATING WORDS ENGINE
+    (function initHeroRotatingWords() {
+      const el = document.getElementById('hero-rotating-word');
+      if (!el) return;
+
+      const phrases = [
+        'GENERE EN DÓLARES $USD',
+        'TRABAJE DESDE TU CELULAR 📲',
+        'CREZCA SIN DEJAR TU TRABAJO ⚡',
+        'TE DÉ LIBERTAD Y VIAJES 🌍'
+      ];
+
+      let phraseIdx = 0;
+
+      function rotatePhrase() {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-10px) scale(0.95)';
+
+        setTimeout(() => {
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          el.textContent = phrases[phraseIdx];
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0) scale(1)';
+        }, 300);
+      }
+
+      setInterval(rotatePhrase, 2600);
+    })();
+
+    // 8. CMS REAL-TIME DATA SYNCHRONIZATION (VERSION 4 HASH GUARD)
     (function initLandingCMS() {
+      // Limpiar datos viejos de versiones previas con textos densos
+      const versionKey = 'msl_landing_cms_v4';
+      if (!localStorage.getItem(versionKey)) {
+        localStorage.removeItem('msl_landing_cms_data');
+        localStorage.setItem(versionKey, 'true');
+      }
+
       const stored = localStorage.getItem('msl_landing_cms_data');
       if (!stored) return;
 
@@ -1991,9 +2142,11 @@
           return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
         }
 
-        // Apply data to data-cms elements
+        // Apply data to data-cms elements (only if valid)
         document.querySelectorAll('[data-cms]').forEach(el => {
           const path = el.dataset.cms;
+          // Avoid overwriting hero title if it contains our dynamic rotator
+          if (path === 'hero.title' || path === 'hero.subtitle') return;
           const val = getNested(data, path);
           if (val !== undefined && val !== null && val !== '') {
             if (path.includes('title') || path.includes('desc') || path.includes('heading')) {
@@ -2009,7 +2162,6 @@
           const path = imgEl.dataset.cmsImg;
           const val = getNested(data, path);
           if (val && typeof val === 'string' && val.trim() !== '') {
-            // Si es una URL vieja de unsplash en los módulos o bio, no sobreescribir la foto real de Andrés
             if (val.includes('unsplash.com') || val.includes('images.unsplash')) {
               return;
             }
