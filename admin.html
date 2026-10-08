@@ -444,89 +444,40 @@
       status.className = 'small text-warning fw-bold';
     }
 
+    // Detectar cambios en los inputs para avisar que hay cambios pendientes
+    document.addEventListener('input', (e) => {
+      if (e.target && e.target.hasAttribute('data-cms-bind')) {
+        markChanged();
+      }
+    });
+
+    const loginInput = document.getElementById('loginPassword');
+    loginInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+
     document.getElementById('loginBtn').addEventListener('click', () => {
-      if (document.getElementById('loginPassword').value === 'andres2026') {
+      const err = document.getElementById('loginError');
+      if (loginInput.value === 'andres2026') {
+        err.classList.add('d-none');
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('adminPanel').style.display = 'block';
         loadData();
-      } else alert('Contraseña incorrecta');
+      } else {
+        err.textContent = 'Contraseña incorrecta. Intenta nuevamente.';
+        err.classList.remove('d-none');
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      document.getElementById('adminPanel').style.display = 'none';
+      document.getElementById('loginScreen').style.display = 'block';
+      loginInput.value = '';
     });
 
     document.getElementById('saveChangesBtn').addEventListener('click', () => {
       readForm();
       localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-      document.getElementById('saveStatus').textContent = '✅ ¡Guardado!';
-      document.getElementById('saveStatus').className = 'small text-success fw-bold';
-    });
-
-    document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
-      if (confirm('¿Seguro?')) {
-        siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
-        localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-        alert('Datos restablecidos.');
-      }
-    });
-
-    // ── VIDEO FILE UPLOAD ──
-    document.getElementById('videoFileInput').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      document.getElementById('videoFileName').textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(1) + ' MB)';
-      const objUrl = URL.createObjectURL(file);
-      const preview = document.getElementById('videoPreview');
-      preview.src = objUrl;
-      document.getElementById('videoPreviewWrap').style.display = 'block';
-
-      if (file.size < 50 * 1024 * 1024) {
-        // < 50MB: store as base64 for portability
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          setNested(siteData, 'videohero.video_url', evt.target.result);
-          // update the URL input field
-          const urlInput = document.querySelector('[data-cms-bind="videohero.video_url"]');
-          if (urlInput) urlInput.value = '(video subido — base64)';
-          document.getElementById('saveStatus').textContent = '⚠️ Hay cambios sin guardar';
-          document.getElementById('saveStatus').className = 'small text-warning';
-        };
-        reader.readAsDataURL(file);
-      } else {
-        // Large file: just show a path hint
-        document.getElementById('videoFileName').innerHTML = `<span class="text-warning">Archivo grande (${(file.size/1024/1024).toFixed(0)} MB). Copia el archivo al servidor y escribe la ruta en el campo de arriba.</span>`;
-      }
-    });
-
-    // ── COUNTDOWN TIMER RESET ──
-    function computeCountdownMs() {
-      const d = parseInt(document.getElementById('countdown_days').value) || 0;
-      const h = parseInt(document.getElementById('countdown_hours').value) || 0;
-      const m = parseInt(document.getElementById('countdown_minutes').value) || 0;
-      const s = parseInt(document.getElementById('countdown_seconds').value) || 0;
-      return ((d * 24 * 60 * 60) + (h * 60 * 60) + (m * 60) + s) * 1000;
-    }
-
-    document.getElementById('resetCountdownBtn').addEventListener('click', () => {
-      const ms = computeCountdownMs();
-      if (ms <= 0) {
-        alert('Por favor ingresa al menos un valor mayor que 0.');
-        return;
-      }
-      const newDeadline = new Date().getTime() + ms;
-      localStorage.setItem('travel_landing_countdown_target', newDeadline);
-      alert('✅ Temporizador reiniciado. Recarga la landing para ver el nuevo contador.');
-    });
-
-    // Also reset countdown on save
-    const originalSaveBtn = document.getElementById('saveChangesBtn');
-    originalSaveBtn.addEventListener('click', () => {
-      localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
-
-      // If countdown values were set, reset the countdown timer too
-      const ms = computeCountdownMs();
-      if (ms > 0) {
-        const newDeadline = new Date().getTime() + ms;
-        localStorage.setItem('travel_landing_countdown_target', newDeadline);
-      }
-
       const status = document.getElementById('saveStatus');
       status.textContent = '✅ ¡Cambios guardados y publicados con éxito!';
       status.className = 'small text-success fw-bold';
@@ -534,6 +485,53 @@
         status.textContent = 'Cambios sincronizados';
         status.className = 'small text-secondary';
       }, 4000);
+    });
+
+    document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
+      if (confirm('¿Seguro que deseas restablecer los datos por defecto?')) {
+        siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
+        localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
+        populateForm();
+        const status = document.getElementById('saveStatus');
+        status.textContent = '✅ Valores restablecidos por defecto';
+        status.className = 'small text-info fw-bold';
+      }
+    });
+
+    // Exportar configuración JSON
+    document.getElementById('exportJsonBtn').addEventListener('click', () => {
+      readForm();
+      const blob = new Blob([JSON.stringify(siteData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'landing_cms_data.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Importar configuración JSON
+    const jsonInput = document.getElementById('jsonFileInput');
+    document.getElementById('importJsonBtn').addEventListener('click', () => {
+      jsonInput.click();
+    });
+    jsonInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          siteData = parsed;
+          localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
+          populateForm();
+          alert('✅ Configuración importada con éxito.');
+        } catch (err) {
+          alert('❌ Archivo JSON no válido.');
+        }
+      };
+      reader.readAsText(file);
+      jsonInput.value = '';
     });
   </script>
 </body>
