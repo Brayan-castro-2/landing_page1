@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración — Social Business Shark</title>
+  <title>Panel de Administración Completo — Social Business Shark</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
     body { background: #080911; color: #f1f5f9; font-family: 'Manrope', system-ui, sans-serif; }
-    .login-card { max-width: 420px; margin: 15vh auto; background: #111422; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .login-card { max-width: 440px; margin: 12vh auto; background: #111422; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
     .admin-panel { display: none; }
-    .section-card { background: #111422; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; overflow: hidden; }
-    .section-card .card-header { background: #181c2e; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; cursor: pointer; user-select: none; color: #fff; }
-    .section-card .card-header:hover { background: #1e2338; }
+    .section-card { background: #111422; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 22px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .section-card .card-header { background: #181c2e; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; cursor: pointer; user-select: none; color: #fff; padding: 14px 20px; transition: background 0.2s; }
+    .section-card .card-header:hover { background: #1e243a; }
     .form-control, .form-select { background: #0b0d18; border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 10px; }
     .form-control:focus, .form-select:focus { background: #0e1120; border-color: #ff5f1a; color: #fff; box-shadow: 0 0 0 0.25rem rgba(255,95,26,0.25); }
-    .form-label { color: #94a3b8; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+    .form-label { color: #94a3b8; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
     .btn-brand { background: linear-gradient(135deg, #ff5f1a, #ff9142); color: #fff; font-weight: 700; border: none; border-radius: 10px; }
     .btn-brand:hover { opacity: 0.95; color: #fff; }
-    .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111422; border-top: 1px solid rgba(255,255,255,0.1); padding: 14px 24px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
-    .item-entry { background: #0b0d18; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
-    .img-preview-box { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); }
+    .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111422; border-top: 1px solid rgba(255,255,255,0.12); padding: 14px 24px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -10px 30px rgba(0,0,0,0.6); backdrop-blur: 10px; }
+    .item-entry { background: #0b0d18; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+    
+    /* Previews de imágenes */
+    .img-preview-wrap { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; }
+    .img-preview-box { border-radius: 10px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); background: #000; }
+    .img-preview-avatar { width: 68px; height: 68px; border-radius: 50%; }
+    .img-preview-portrait { width: 72px; height: 128px; aspect-ratio: 9/16; border-radius: 10px; }
+    .img-preview-landscape { width: 110px; height: 75px; aspect-ratio: 16/10; border-radius: 10px; }
+    .badge-preview-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(255,95,26,0.15); color: #ff9142; border: 1px solid rgba(255,95,26,0.3); padding: 3px 8px; border-radius: 6px; }
   </style>
 </head>
 <body>
@@ -31,18 +38,18 @@
     <div class="login-card card">
       <div class="card-body p-4 p-md-5">
         <div class="text-center mb-4">
-          <div class="w-16 h-16 rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-center mb-3" style="width: 60px; height: 60px;">
-            <i class="bi bi-shield-lock" style="font-size: 1.8rem; color: #ff9142;"></i>
+          <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+            <i class="bi bi-shield-lock" style="font-size: 2rem; color: #ff9142;"></i>
           </div>
-          <h4 class="fw-bold text-white">Modo Administrador</h4>
-          <p class="text-secondary small">Social Business Shark — Panel de Edición</p>
+          <h4 class="fw-bold text-white mb-1">Modo Administrador Total</h4>
+          <p class="text-secondary small">Panel de Edición Completo — Social Business Shark</p>
         </div>
         <div class="mb-3">
           <label class="form-label">Contraseña de Acceso</label>
           <input type="password" id="loginPassword" class="form-control form-control-lg" placeholder="Contraseña (por defecto: andres2026)">
         </div>
         <div id="loginError" class="alert alert-danger d-none small py-2"></div>
-        <button id="loginBtn" class="btn btn-brand w-100 btn-lg">
+        <button id="loginBtn" class="btn btn-brand w-100 btn-lg shadow">
           <i class="bi bi-box-arrow-in-right me-2"></i>Entrar al Panel
         </button>
       </div>
@@ -51,28 +58,29 @@
 
   <!-- ═══ PANEL DE CONTROL ═══ -->
   <div id="adminPanel" class="admin-panel">
-    <nav class="navbar navbar-dark" style="background: #111422; border-bottom: 1px solid rgba(255,255,255,0.08);">
-      <div class="container">
+    <!-- Navbar superior -->
+    <nav class="navbar navbar-dark sticky-top" style="background: #111422; border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 999;">
+      <div class="container-fluid px-3 px-md-4">
         <span class="navbar-brand fw-bold text-white d-flex align-items-center gap-2">
           <i class="bi bi-sliders2 text-warning" style="color: #ff9142 !important;"></i>
-          <span>CMS • Social Business Shark</span>
+          <span>CMS Completo • Social Business Shark</span>
         </span>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
           <a href="index.html" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-eye me-1"></i>Ver Landing</a>
-          <button id="exportJsonBtn" class="btn btn-outline-info btn-sm"><i class="bi bi-download me-1"></i>Exportar</button>
-          <button id="importJsonBtn" class="btn btn-outline-warning btn-sm"><i class="bi bi-upload me-1"></i>Importar</button>
+          <button id="exportJsonBtn" class="btn btn-outline-info btn-sm"><i class="bi bi-download me-1"></i>Exportar JSON</button>
+          <button id="importJsonBtn" class="btn btn-outline-warning btn-sm"><i class="bi bi-upload me-1"></i>Importar JSON</button>
           <button id="resetDefaultsBtn" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-counterclockwise me-1"></i>Restablecer</button>
           <button id="logoutBtn" class="btn btn-outline-danger btn-sm"><i class="bi bi-box-arrow-right me-1"></i>Salir</button>
         </div>
       </div>
     </nav>
 
-    <div class="container py-4" style="padding-bottom: 140px !important;">
+    <div class="container py-4" style="padding-bottom: 130px !important;">
 
-      <!-- 1. INFORMACIÓN DE MARCA -->
+      <!-- 1. MARCA, WHATSAPP Y ENLACE DE CONVERSIÓN -->
       <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBrand">
-          <span><i class="bi bi-whatsapp me-2 text-success"></i>1. Marca, WhatsApp y Contacto</span>
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBrand">
+          <span><i class="bi bi-whatsapp me-2 text-success"></i>1. Marca, WhatsApp y Mensaje de Conversión</span>
           <i class="bi bi-chevron-down"></i>
         </div>
         <div id="secBrand" class="collapse show">
@@ -83,25 +91,170 @@
                 <input type="text" class="form-control" data-cms-bind="brand.name">
               </div>
               <div class="col-md-6">
-                <label class="form-label">Número de WhatsApp (código de país, sin espacios)</label>
+                <label class="form-label">Número de WhatsApp (con código de país, sin + ni espacios)</label>
                 <input type="text" class="form-control" data-cms-bind="brand.phone_number" placeholder="56926142489">
               </div>
               <div class="col-md-6">
-                <label class="form-label">Texto Visible de WhatsApp</label>
+                <label class="form-label">Texto Visible del Teléfono</label>
                 <input type="text" class="form-control" data-cms-bind="brand.phone_display" placeholder="+56 9 2614 2489">
               </div>
               <div class="col-md-6">
                 <label class="form-label">Nombre del Mentor / Expositor</label>
                 <input type="text" class="form-control" data-cms-bind="brand.mentor_name" placeholder="Andrés González">
               </div>
-              <div class="col-md-12">
-                <label class="form-label">Foto de Perfil del Mentor (Avatar WhatsApp / Hero)</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" data-cms-bind="brand.avatar_img" placeholder="./IMG_4803.jpg">
-                  <label class="btn btn-outline-secondary mb-0">
-                    <i class="bi bi-folder2-open"></i>
-                    <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'brand.avatar_img')">
-                  </label>
+              
+              <!-- Foto Avatar con Preview -->
+              <div class="col-12">
+                <label class="form-label">Foto de Perfil del Mentor (Avatar WhatsApp / Header)</label>
+                <div class="img-preview-wrap">
+                  <img id="prev_brand_avatar_img" src="./IMG_4803.jpg" class="img-preview-box img-preview-avatar" alt="Avatar actual">
+                  <div class="flex-grow-1">
+                    <span class="badge-preview-tag d-inline-block mb-1">Imagen Actual</span>
+                    <div class="input-group">
+                      <input type="text" class="form-control form-control-sm" data-cms-bind="brand.avatar_img" placeholder="./IMG_4803.jpg" oninput="updatePreview('prev_brand_avatar_img', this.value)">
+                      <label class="btn btn-outline-secondary btn-sm mb-0">
+                        <i class="bi bi-folder2-open"></i> Subir
+                        <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'brand.avatar_img', 'prev_brand_avatar_img')">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mensaje predeterminado de WhatsApp -->
+              <div class="col-12">
+                <label class="form-label text-success"><i class="bi bi-chat-text-fill me-1"></i>Mensaje que se abre al tocar WhatsApp (URL text)</label>
+                <textarea class="form-control" rows="2" data-cms-bind="whatsapp.message" placeholder="Hola Andrés, quiero acceder al entrenamiento gratuito de 4 clases en vivo"></textarea>
+                <small class="text-secondary">Este es el texto preescrito que le aparecerá al usuario listo para enviar.</small>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Texto del Botón Principal de WhatsApp</label>
+                <input type="text" class="form-control" data-cms-bind="whatsapp.button_text" placeholder="QUIERO ACCEDER AL ENTRENAMIENTO">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Subtexto del Botón Principal</label>
+                <input type="text" class="form-control" data-cms-bind="whatsapp.button_subtext" placeholder="Toca aquí para entrar gratis al grupo privado ➔">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. HERO PRINCIPAL, TEXTO DE DOLOR Y FRASES ROTATORIAS -->
+      <div class="section-card">
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secHero">
+          <span><i class="bi bi-stars me-2 text-warning"></i>2. Hero Principal, Dolor y Frases Rotatorias</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secHero" class="collapse">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label">Badge Superior (Eyebrow)</label>
+                <input type="text" class="form-control" data-cms-bind="hero.eyebrow">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Badge Secundario (Ej: Cupos limitados)</label>
+                <input type="text" class="form-control" data-cms-bind="hero.badge_limit">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Título Principal — Primera Línea</label>
+                <input type="text" class="form-control" data-cms-bind="hero.title_start">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Título Principal — Frase Destacada (Con Degradado)</label>
+                <input type="text" class="form-control" data-cms-bind="hero.title_highlight">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Subtítulo Descriptivo</label>
+                <textarea class="form-control" rows="3" data-cms-bind="hero.subtitle"></textarea>
+              </div>
+              
+              <!-- Texto de Dolor e Identificación -->
+              <div class="col-12">
+                <label class="form-label text-warning"><i class="bi bi-exclamation-triangle-fill me-1"></i>Bloque de Dolor e Identificación (Recuadro Central)</label>
+                <textarea class="form-control" rows="3" data-cms-bind="hero.pain_text"></textarea>
+                <small class="text-secondary">Puedes usar saltos de línea para separar las frases de impacto.</small>
+              </div>
+
+              <!-- Frases Rotatorias Animadas -->
+              <div class="col-12">
+                <label class="form-label text-info"><i class="bi bi-arrow-repeat me-1"></i>Frases Rotatorias Animadas (Una por línea)</label>
+                <textarea class="form-control font-monospace" rows="4" id="hero_rotating_phrases_input" placeholder="CONSTRUYA EN DIGITAL&#10;DESARROLLE HABILIDADES&#10;CREE UNA NUEVA FUENTE&#10;APRENDA UN SISTEMA"></textarea>
+                <small class="text-secondary">Escribe una frase por línea. La landing las alternará automáticamente.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PILARES: EL SISTEMA DE 3 PASOS -->
+      <div class="section-card">
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secPilares">
+          <span><i class="bi bi-columns-gap me-2 text-primary"></i>3. Pilares del Sistema (Tarjetas 01, 02 y 03)</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secPilares" class="collapse">
+          <div class="card-body">
+            <div class="row g-3 mb-3">
+              <div class="col-md-4">
+                <label class="form-label">Badge de Sección</label>
+                <input type="text" class="form-control" data-cms-bind="pilares.badge">
+              </div>
+              <div class="col-md-8">
+                <label class="form-label">Título de la Sección</label>
+                <input type="text" class="form-control" data-cms-bind="pilares.title">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Subtítulo / Resumen</label>
+                <input type="text" class="form-control" data-cms-bind="pilares.subtitle">
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <!-- Pilar 1 -->
+              <div class="col-md-4">
+                <div class="item-entry h-100">
+                  <span class="badge bg-primary mb-2">Pilar 01</span>
+                  <label class="form-label">Etiqueta</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar1.tag">
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar1.title">
+                  <label class="form-label">Cita / Frase</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar1.quote">
+                  <label class="form-label">Viñetas (una por línea)</label>
+                  <textarea class="form-control form-control-sm" rows="3" data-cms-bind="pilares.pilar1.bullets"></textarea>
+                </div>
+              </div>
+
+              <!-- Pilar 2 -->
+              <div class="col-md-4">
+                <div class="item-entry h-100">
+                  <span class="badge bg-warning text-dark mb-2">Pilar 02</span>
+                  <label class="form-label">Etiqueta</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar2.tag">
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar2.title">
+                  <label class="form-label">Cita / Frase</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar2.quote">
+                  <label class="form-label">Viñetas (una por línea)</label>
+                  <textarea class="form-control form-control-sm" rows="3" data-cms-bind="pilares.pilar2.bullets"></textarea>
+                </div>
+              </div>
+
+              <!-- Pilar 3 -->
+              <div class="col-md-4">
+                <div class="item-entry h-100">
+                  <span class="badge bg-success mb-2">Pilar 03</span>
+                  <label class="form-label">Etiqueta</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar3.tag">
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar3.title">
+                  <label class="form-label">Cita / Frase</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="pilares.pilar3.quote">
+                  <label class="form-label">Viñetas (una por línea)</label>
+                  <textarea class="form-control form-control-sm" rows="3" data-cms-bind="pilares.pilar3.bullets"></textarea>
                 </div>
               </div>
             </div>
@@ -109,37 +262,10 @@
         </div>
       </div>
 
-      <!-- 2. HERO PRINCIPAL -->
+      <!-- 4. TEMARIO DE LOS 4 MÓDULOS (FOTOS 9:16 CON PREVIEW VISUAL) -->
       <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secHero">
-          <span><i class="bi bi-stars me-2 text-warning"></i>2. Hero Principal (Cabecera)</span>
-          <i class="bi bi-chevron-down"></i>
-        </div>
-        <div id="secHero" class="collapse">
-          <div class="card-body">
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label">Badge Superior (Eyebrow)</label>
-                <input type="text" class="form-control" data-cms-bind="hero.eyebrow">
-              </div>
-              <div class="col-12">
-                <label class="form-label">Título Principal (H1)</label>
-                <textarea class="form-control" rows="3" data-cms-bind="hero.title"></textarea>
-                <small class="text-secondary">Admite etiquetas HTML para estilos y colores.</small>
-              </div>
-              <div class="col-12">
-                <label class="form-label">Subtítulo Descriptivo</label>
-                <textarea class="form-control" rows="3" data-cms-bind="hero.subtitle"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. TEMARIO DE LOS 4 MÓDULOS -->
-      <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secTemario">
-          <span><i class="bi bi-journal-text me-2 text-primary"></i>3. Temario de los 4 Módulos (Fotos 9:16)</span>
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secTemario">
+          <span><i class="bi bi-collection-play me-2 text-danger"></i>4. Temario de los 4 Módulos (Fotos 9:16 con Vista Previa)</span>
           <i class="bi bi-chevron-down"></i>
         </div>
         <div id="secTemario" class="collapse">
@@ -160,204 +286,297 @@
             </div>
 
             <h6 class="fw-bold text-warning mb-3">Módulos Individuales:</h6>
-            
+
+            <!-- Módulo 1 -->
             <div class="item-entry">
-              <h6 class="text-white fw-bold mb-2">Módulo 01</h6>
-              <div class="row g-2">
-                <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.0.title"></div>
-                <div class="col-md-6">
-                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" data-cms-bind="clases.0.img">
-                    <label class="btn btn-outline-secondary mb-0">
-                      <i class="bi bi-folder2-open"></i>
-                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.0.img')">
-                    </label>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-white fw-bold mb-0">Módulo 01</h6>
+                <span class="badge bg-secondary">Formato 9:16</span>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-3 text-center">
+                  <div class="p-2 rounded bg-black d-inline-block border border-secondary">
+                    <img id="prev_clases_0_img" src="./IMG_4803.jpg" class="img-preview-box img-preview-portrait" alt="Módulo 1">
+                    <div class="small text-secondary mt-1" style="font-size: 10px;">Imagen Actual</div>
                   </div>
                 </div>
-                <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.0.desc"></textarea></div>
+                <div class="col-md-9">
+                  <label class="form-label">Título del Módulo</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="clases.0.title">
+                  <label class="form-label">Ruta o Archivo de Imagen 9:16</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="clases.0.img" oninput="updatePreview('prev_clases_0_img', this.value)">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i> Subir Foto
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.0.img', 'prev_clases_0_img')">
+                    </label>
+                  </div>
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.0.desc"></textarea>
+                </div>
               </div>
             </div>
 
+            <!-- Módulo 2 -->
             <div class="item-entry">
-              <h6 class="text-white fw-bold mb-2">Módulo 02</h6>
-              <div class="row g-2">
-                <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.1.title"></div>
-                <div class="col-md-6">
-                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" data-cms-bind="clases.1.img">
-                    <label class="btn btn-outline-secondary mb-0">
-                      <i class="bi bi-folder2-open"></i>
-                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.1.img')">
-                    </label>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-white fw-bold mb-0">Módulo 02</h6>
+                <span class="badge bg-secondary">Formato 9:16</span>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-3 text-center">
+                  <div class="p-2 rounded bg-black d-inline-block border border-secondary">
+                    <img id="prev_clases_1_img" src="./IMG_4349.jpg" class="img-preview-box img-preview-portrait" alt="Módulo 2">
+                    <div class="small text-secondary mt-1" style="font-size: 10px;">Imagen Actual</div>
                   </div>
                 </div>
-                <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.1.desc"></textarea></div>
+                <div class="col-md-9">
+                  <label class="form-label">Título del Módulo</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="clases.1.title">
+                  <label class="form-label">Ruta o Archivo de Imagen 9:16</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="clases.1.img" oninput="updatePreview('prev_clases_1_img', this.value)">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i> Subir Foto
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.1.img', 'prev_clases_1_img')">
+                    </label>
+                  </div>
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.1.desc"></textarea>
+                </div>
               </div>
             </div>
 
+            <!-- Módulo 3 -->
             <div class="item-entry">
-              <h6 class="text-white fw-bold mb-2">Módulo 03</h6>
-              <div class="row g-2">
-                <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.2.title"></div>
-                <div class="col-md-6">
-                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" data-cms-bind="clases.2.img">
-                    <label class="btn btn-outline-secondary mb-0">
-                      <i class="bi bi-folder2-open"></i>
-                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.2.img')">
-                    </label>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-white fw-bold mb-0">Módulo 03</h6>
+                <span class="badge bg-secondary">Formato 9:16</span>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-3 text-center">
+                  <div class="p-2 rounded bg-black d-inline-block border border-secondary">
+                    <img id="prev_clases_2_img" src="./IMG_2704.jpg" class="img-preview-box img-preview-portrait" alt="Módulo 3">
+                    <div class="small text-secondary mt-1" style="font-size: 10px;">Imagen Actual</div>
                   </div>
                 </div>
-                <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.2.desc"></textarea></div>
+                <div class="col-md-9">
+                  <label class="form-label">Título del Módulo</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="clases.2.title">
+                  <label class="form-label">Ruta o Archivo de Imagen 9:16</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="clases.2.img" oninput="updatePreview('prev_clases_2_img', this.value)">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i> Subir Foto
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.2.img', 'prev_clases_2_img')">
+                    </label>
+                  </div>
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.2.desc"></textarea>
+                </div>
               </div>
             </div>
 
+            <!-- Módulo 4 -->
             <div class="item-entry">
-              <h6 class="text-white fw-bold mb-2">Módulo 04</h6>
-              <div class="row g-2">
-                <div class="col-md-6"><label class="form-label">Título</label><input type="text" class="form-control form-control-sm" data-cms-bind="clases.3.title"></div>
-                <div class="col-md-6">
-                  <label class="form-label">Imagen 9:16 (URL o Archivo)</label>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" data-cms-bind="clases.3.img">
-                    <label class="btn btn-outline-secondary mb-0">
-                      <i class="bi bi-folder2-open"></i>
-                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.3.img')">
-                    </label>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-white fw-bold mb-0">Módulo 04</h6>
+                <span class="badge bg-secondary">Formato 9:16</span>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-3 text-center">
+                  <div class="p-2 rounded bg-black d-inline-block border border-secondary">
+                    <img id="prev_clases_3_img" src="./IMG_4369.jpg" class="img-preview-box img-preview-portrait" alt="Módulo 4">
+                    <div class="small text-secondary mt-1" style="font-size: 10px;">Imagen Actual</div>
                   </div>
                 </div>
-                <div class="col-12"><label class="form-label">Descripción</label><textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.3.desc"></textarea></div>
+                <div class="col-md-9">
+                  <label class="form-label">Título del Módulo</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="clases.3.title">
+                  <label class="form-label">Ruta o Archivo de Imagen 9:16</label>
+                  <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="form-control" data-cms-bind="clases.3.img" oninput="updatePreview('prev_clases_3_img', this.value)">
+                    <label class="btn btn-outline-secondary mb-0">
+                      <i class="bi bi-folder2-open"></i> Subir Foto
+                      <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'clases.3.img', 'prev_clases_3_img')">
+                    </label>
+                  </div>
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="clases.3.desc"></textarea>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      <!-- 4. GALERÍA -->
+      <!-- 5. STORYTELLING / TELEPROMPTER ESTILO SPOTIFY -->
       <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secGaleria">
-          <span><i class="bi bi-images me-2 text-info"></i>4. Galería de Experiencias (6 Fotos)</span>
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secSpotify">
+          <span><i class="bi bi-music-note-beamed me-2 text-success"></i>5. Storytelling / Frases del Teleprompter Spotify</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secSpotify" class="collapse">
+          <div class="card-body">
+            <p class="text-secondary small mb-3">
+              Edita las estrofas o frases sincronizadas que van rotando en la sección interactiva de la historia de Andrés. Cada línea en el siguiente cuadro corresponde a una estrofa.
+            </p>
+            <label class="form-label text-success">Frases de la Historia (Una por línea)</label>
+            <textarea class="form-control font-monospace" rows="9" id="spotify_lyrics_input"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. PRUEBA SOCIAL / NOTIFICACIONES FLOTANTES (PERSONAS RANDOM) -->
+      <div class="section-card">
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secSocialProof">
+          <span><i class="bi bi-bell-fill me-2 text-info"></i>6. Notificaciones Flotantes de Personas (Prueba Social)</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secSocialProof" class="collapse">
+          <div class="card-body">
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="social_proof_enabled_check" checked>
+              <label class="form-check-label fw-bold text-white" for="social_proof_enabled_check">
+                Mostrar notificaciones flotantes en la esquina inferior izquierda
+              </label>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Texto de la Acción</label>
+                <input type="text" class="form-control" data-cms-bind="social_proof.action_text" placeholder="aseguró su cupo">
+                <small class="text-secondary">Ej: "aseguró su cupo", "se unió al grupo", "entró a las 4 clases".</small>
+              </div>
+            </div>
+
+            <label class="form-label text-info">Lista de Personas (Formato: Nombre | Bandera | País)</label>
+            <textarea class="form-control font-monospace" rows="7" id="social_proof_list_input" placeholder="Carlos M. | 🇨🇱 | Chile&#10;Fernanda R. | 🇦🇷 | Argentina"></textarea>
+            <small class="text-secondary">Escribe una persona por línea usando barras verticales (|) para separar.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. GALERÍA DE EXPERIENCIAS (CON PREVIEWS) -->
+      <div class="section-card">
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secGaleria">
+          <span><i class="bi bi-images me-2 text-warning"></i>7. Galería de Experiencias (6 Fotos con Previsualización)</span>
           <i class="bi bi-chevron-down"></i>
         </div>
         <div id="secGaleria" class="collapse">
           <div class="card-body">
-            <div class="row g-3" id="galeriaInputsContainer">
-              <!-- Foto 1 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 01</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.0.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.0.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.0.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.0.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
-              <!-- Foto 2 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 02</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.1.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.1.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.1.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.1.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
-              <!-- Foto 3 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 03</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.2.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.2.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.2.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.2.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
-              <!-- Foto 4 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 04</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.3.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.3.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.3.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.3.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
-              <!-- Foto 5 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 05</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.4.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.4.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.4.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.4.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
-              <!-- Foto 6 -->
-              <div class="col-md-6">
-                <div class="item-entry">
-                  <h6 class="text-warning fw-bold small">Foto 06</h6>
-                  <label class="form-label">Imagen</label>
-                  <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" data-cms-bind="gallery.5.src">
-                    <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.5.src')"></label>
-                  </div>
-                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.5.title" placeholder="Título">
-                  <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.5.desc" placeholder="Descripción"></textarea>
-                </div>
-              </div>
+            <div class="row g-3">
+              <!-- Foto 1 a 6 generadas dinámicamente con preview -->
+              <div class="col-md-6" id="galeriaEntry0"></div>
+              <div class="col-md-6" id="galeriaEntry1"></div>
+              <div class="col-md-6" id="galeriaEntry2"></div>
+              <div class="col-md-6" id="galeriaEntry3"></div>
+              <div class="col-md-6" id="galeriaEntry4"></div>
+              <div class="col-md-6" id="galeriaEntry5"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 5. BIO -->
+      <!-- 8. BIO DE ANDRÉS (CON PREVIEW) -->
       <div class="section-card">
-        <div class="card-header p-3 d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBio">
-          <span><i class="bi bi-person-badge me-2 text-warning"></i>5. Sección ¿Quién soy?</span>
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBio">
+          <span><i class="bi bi-person-badge me-2 text-warning"></i>8. Sección ¿Quién soy? (Foto de Autoridad y Biografía)</span>
           <i class="bi bi-chevron-down"></i>
         </div>
         <div id="secBio" class="collapse">
           <div class="card-body">
             <div class="row g-3">
+              <!-- Foto con preview -->
               <div class="col-12">
-                <label class="form-label">Foto de Autoridad</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" data-cms-bind="bio.photo">
-                  <label class="btn btn-outline-secondary mb-0"><i class="bi bi-folder2-open"></i><input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'bio.photo')"></label>
+                <label class="form-label">Foto de Autoridad de Andrés</label>
+                <div class="img-preview-wrap">
+                  <img id="prev_bio_photo" src="./IMG_4369.jpg" class="img-preview-box img-preview-landscape" alt="Foto autoridad">
+                  <div class="flex-grow-1">
+                    <span class="badge-preview-tag d-inline-block mb-1">Imagen Actual</span>
+                    <div class="input-group">
+                      <input type="text" class="form-control form-control-sm" data-cms-bind="bio.photo" oninput="updatePreview('prev_bio_photo', this.value)">
+                      <label class="btn btn-outline-secondary btn-sm mb-0">
+                        <i class="bi bi-folder2-open"></i> Subir Foto
+                        <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'bio.photo', 'prev_bio_photo')">
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Título / Nombre</label>
+                <input type="text" class="form-control" data-cms-bind="bio.title">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Subtítulo / Profesión</label>
+                <input type="text" class="form-control" data-cms-bind="bio.subtitle">
+              </div>
               <div class="col-12">
-                <label class="form-label">Biografía (HTML)</label>
-                <textarea class="form-control" rows="6" data-cms-bind="bio.description"></textarea>
+                <label class="form-label">Descripción Biográfica</label>
+                <textarea class="form-control" rows="5" data-cms-bind="bio.description"></textarea>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
+      <!-- 9. BADGES DE VALOR DEL CIERRE -->
+      <div class="section-card">
+        <div class="card-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#secBadges">
+          <span><i class="bi bi-patch-check-fill me-2 text-success"></i>9. Insignias de Beneficio del Cierre (Bajo el Botón)</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div id="secBadges" class="collapse">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="item-entry">
+                  <h6 class="text-white fw-bold mb-2">Insignia 1</h6>
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="badges.badge1_title">
+                  <label class="form-label">Subtítulo</label>
+                  <input type="text" class="form-control form-control-sm" data-cms-bind="badges.badge1_desc">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="item-entry">
+                  <h6 class="text-white fw-bold mb-2">Insignia 2</h6>
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="badges.badge2_title">
+                  <label class="form-label">Subtítulo</label>
+                  <input type="text" class="form-control form-control-sm" data-cms-bind="badges.badge2_desc">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="item-entry">
+                  <h6 class="text-white fw-bold mb-2">Insignia 3</h6>
+                  <label class="form-label">Título</label>
+                  <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="badges.badge3_title">
+                  <label class="form-label">Subtítulo</label>
+                  <input type="text" class="form-control form-control-sm" data-cms-bind="badges.badge3_desc">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
+    <!-- Barra de Guardar fija -->
     <div class="save-bar">
-      <div><span id="saveStatus" class="small text-secondary">No hay cambios pendientes</span></div>
-      <button id="saveChangesBtn" class="btn btn-brand btn-lg px-4"><i class="bi bi-check-circle me-2"></i>Guardar y Publicar</button>
+      <div>
+        <span id="saveStatus" class="small text-secondary fw-semibold">No hay cambios pendientes</span>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="index.html" target="_blank" class="btn btn-outline-light"><i class="bi bi-eye me-1"></i>Ver Landing</a>
+        <button id="saveChangesBtn" class="btn btn-brand btn-lg px-4 shadow">
+          <i class="bi bi-check-circle me-2"></i>Guardar y Publicar
+        </button>
+      </div>
     </div>
   </div>
 
@@ -365,29 +584,152 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    // ════ ESQUEMA DE DATOS POR DEFECTO COMPLETO ════
     const DEFAULT_CMS_DATA = {
-      brand: { name: "SOCIAL BUSINESS SHARK", phone_number: "56926142489", phone_display: "+56 9 2614 2489", mentor_name: "Andrés González", avatar_img: "./IMG_4803.jpg" },
+      brand: {
+        name: "SOCIAL BUSINESS SHARK",
+        phone_number: "56926142489",
+        phone_display: "+56 9 2614 2489",
+        mentor_name: "Andrés González",
+        avatar_img: "./IMG_4803.jpg"
+      },
+      whatsapp: {
+        message: "Hola Andrés, quiero acceder al entrenamiento gratuito de 4 clases en vivo",
+        button_text: "QUIERO ACCEDER AL ENTRENAMIENTO",
+        button_subtext: "Toca aquí para entrar gratis al grupo privado ➔"
+      },
       hero: {
         eyebrow: "ENTRENAMIENTO ONLINE GRATUITO · 4 CLASES EN VIVO",
-        title: "CÓMO CONSTRUIR UN NEGOCIO DIGITAL Y CREAR UNA NUEVA FUENTE DE INGRESOS EN DÓLARES",
-        subtitle: "Descubre en un entrenamiento gratuito de 4 clases cómo funciona un modelo de negocio digital que puedes comenzar a desarrollar en paralelo a tu trabajo o emprendimiento, mientras desarrollas nuevas habilidades y aprendes un sistema para construirlo."
+        badge_limit: "Cupos limitados",
+        title_start: "CÓMO CONSTRUIR UN NEGOCIO DIGITAL Y CREAR UNA",
+        title_highlight: "NUEVA FUENTE DE INGRESOS EN DÓLARES",
+        subtitle: "Descubre en un entrenamiento gratuito de 4 clases cómo funciona un modelo de negocio digital que puedes comenzar a desarrollar en paralelo a tu trabajo o emprendimiento, mientras desarrollas nuevas habilidades y aprendes un sistema para construirlo.",
+        pain_text: "Porque quizás el problema no es cuánto ganas hoy.\nEs depender de tu tiempo para poder ganar más.\nSi quieres construir una alternativa sin necesariamente dejar lo que hoy haces, este entrenamiento es para ti.",
+        rotating_phrases: [
+          "CONSTRUYA EN DIGITAL",
+          "DESARROLLE HABILIDADES",
+          "CREE UNA NUEVA FUENTE",
+          "APRENDA UN SISTEMA"
+        ]
+      },
+      pilares: {
+        badge: "EL SISTEMA SOCIAL BUSINESS SHARK",
+        title: "3 PILARES PARA CONSTRUIR TU PROPIO NEGOCIO DIGITAL",
+        subtitle: "Un sistema paso a paso para desarrollar habilidades, construir equipo y crear una nueva fuente de ingresos.",
+        pilar1: {
+          tag: "01 — DESARROLLA HABILIDADES",
+          title: "CONVIÉRTETE EN ALGUIEN CAPAZ DE CONSTRUIR",
+          quote: "Tus habilidades determinan cuánto eres capaz de construir.",
+          bullets: "Comunicación, ventas y creación de contenido.\nRelaciones estratégicas y liderazgo.\nEl negocio te da la oportunidad; tus habilidades construyen el resultado."
+        },
+        pilar2: {
+          tag: "02 — CONSTRUYE UN EQUIPO",
+          title: "APRENDE A CREAR Y LIDERAR PERSONAS",
+          quote: "Un negocio grande no se construye solo. Se construye con personas.",
+          bullets: "No se trata solamente de vender un producto.\nAprende a comunicar una visión y conectar con personas.\nForma nuevos líderes y construye un equipo que crezca contigo."
+        },
+        pilar3: {
+          tag: "03 — CONSTRUYE UNA NUEVA FUENTE",
+          title: "DEJA DE DEPENDER DE UNA SOLA FUENTE",
+          quote: "Construir una alternativa en paralelo te da tranquilidad y opciones.",
+          bullets: "Aprende un modelo que funciona en digital.\nComienza sin dejar tu trabajo o actividad actual.\nCrea un activo que pueda crecer con el tiempo."
+        }
       },
       temario: {
-        subtitle: "ENTRENAMIENTO ONLINE · 4 CLASES EN VIVO",
+        subtitle: "Entrenamiento Online · 4 Clases en Vivo",
         title: "4 CLASES EN VIVO PARA ENTENDER EL MODELO PASO A PASO",
         description: "Conoce el temario de las 4 clases en vivo diseñadas para que descubras cómo construir tu propio negocio digital."
       },
       clases: [
-        { title: "CLASE 1 — ROMPE EL MODELO", img: "./IMG_4803.jpg", desc: "Cuestiona la forma en que actualmente construyes tus ingresos." },
-        { title: "CLASE 2 — CONSTRUYE EN DIGITAL", img: "./IMG_4349.jpg", desc: "Descubre qué hay realmente detrás de un negocio digital." },
-        { title: "CLASE 3 — DESCUBRE EL VEHÍCULO", img: "./IMG_2704.jpg", desc: "Conoce el modelo que elegí y cómo funciona." },
-        { title: "CLASE 4 — CONSTRUYE TU PROPIO CAMINO", img: "./IMG_4369.jpg", desc: "Descubre qué necesitas para comenzar y si este camino es para ti." }
+        { title: "CLASE 1 — ROMPE EL MODELO", img: "./IMG_4803.jpg", desc: "Cuestiona la forma en que actualmente construyes tus ingresos y por qué depender de tu tiempo limita tu crecimiento." },
+        { title: "CLASE 2 — CONSTRUYE EN DIGITAL", img: "./IMG_4349.jpg", desc: "Descubre qué hay realmente detrás de un negocio digital y cómo funcionan los modelos de negocio modernos." },
+        { title: "CLASE 3 — DESCUBRE EL VEHÍCULO", img: "./IMG_2704.jpg", desc: "Conoce el modelo que elegí y cómo funciona el sistema para comercializar, escalar y construir un equipo." },
+        { title: "CLASE 4 — CONSTRUYE TU PROPIO CAMINO", img: "./IMG_4369.jpg", desc: "Descubre qué necesitas para comenzar y cómo evaluar de forma objetiva si este camino es para ti." }
       ],
-      gallery: Array(6).fill({ src: '', title: '', desc: '' }),
-      bio: { photo: "./IMG_4369.jpg", description: "No comencé buscando un golpe de suerte. Comencé buscando una forma diferente de construir mi futuro..." }
+      spotify_lyrics: [
+        "No comencé buscando un golpe de suerte. Comencé buscando una forma diferente de construir mi futuro.",
+        "Estudié mecánica automotriz, fui mecánico y vendí frutas y verduras en la calle durante años.",
+        "Trabajaba sin descanso, pero descubrí que depender de mi tiempo para ganar más ponía un techo a mi crecimiento.",
+        "Tuve que salir de mi zona cómoda y desarrollar nuevas habilidades: comunicación, ventas, contenido y liderazgo.",
+        "Hoy he alcanzado +US$10.000 en ventas, con más de 100 clientes y una organización de +50 personas.",
+        "Entendí que un negocio grande no se construye solo: se construye desarrollando personas y liderando en equipo.",
+        "Por eso enseño este modelo: Para que conozcas el vehículo y las habilidades necesarias, sin promesas falsas.",
+        "En estas 4 clases en vivo te mostraré el sistema paso a paso para que decidas si este camino es para ti."
+      ],
+      social_proof: {
+        enabled: true,
+        action_text: "aseguró su cupo",
+        list: [
+          { name: "Carlos M.", flag: "🇨🇱", country: "Chile" },
+          { name: "Fernanda R.", flag: "🇦🇷", country: "Argentina" },
+          { name: "Javier S.", flag: "🇲🇽", country: "México" },
+          { name: "Camila V.", flag: "🇨🇴", country: "Colombia" },
+          { name: "Diego L.", flag: "🇵🇪", country: "Perú" },
+          { name: "Valentina P.", flag: "🇨🇱", country: "Chile" },
+          { name: "Andrés G.", flag: "🇪🇨", country: "Ecuador" },
+          { name: "Sofía T.", flag: "🇦🇷", country: "Argentina" },
+          { name: "Matías B.", flag: "🇺🇾", country: "Uruguay" },
+          { name: "Isidora C.", flag: "🇨🇱", country: "Chile" },
+          { name: "Rodrigo A.", flag: "🇲🇽", country: "México" },
+          { name: "Constanza F.", flag: "🇨🇱", country: "Chile" }
+        ]
+      },
+      gallery: [
+        { src: "./IMG_4803.jpg", title: "Entrenamiento Presencial", desc: "Capacitaciones y eventos de liderazgo." },
+        { src: "./IMG_4349.jpg", title: "Comunidad y Equipo", desc: "Networking con emprendedores de toda la región." },
+        { src: "./IMG_2704.jpg", title: "Sesiones en Vivo", desc: "Clases y mentorías de alto valor práctico." },
+        { src: "./IMG_4369.jpg", title: "Resultados Reales", desc: "Construyendo negocios sostenibles en el tiempo." },
+        { src: "./IMG_4803.jpg", title: "Viajes & Eventos", desc: "Experiencias internacionales con la comunidad." },
+        { src: "./IMG_4349.jpg", title: "Sistema Educativo", desc: "Formación continua en habilidades digitales." }
+      ],
+      bio: {
+        photo: "./IMG_4369.jpg",
+        title: "ANDRÉS GONZÁLEZ",
+        subtitle: "Emprendedor, mentor y formador de líderes en negocios digitales",
+        description: "No comencé buscando un golpe de suerte. Comencé buscando una forma diferente de construir mi futuro. Tras años como mecánico y vendedor ambulante, aprendí a construir sistemas digitales y hoy formo a cientos de personas para que desarrollen habilidades de alta demanda y creen nuevas fuentes de ingresos."
+      },
+      badges: {
+        badge1_title: "Acceso 100% Gratis",
+        badge1_desc: "Para las 4 clases en vivo",
+        badge2_title: "4 Clases en Vivo",
+        badge2_desc: "Modelo explicado paso a paso",
+        badge3_title: "Grupo Privado",
+        badge3_desc: "Toda la información y accesos"
+      }
     };
 
     let siteData = {};
+
+    // Generar campos de galería dinámicamente con previsualización
+    function renderGalleryInputs() {
+      for (let i = 0; i < 6; i++) {
+        const wrap = document.getElementById('galeriaEntry' + i);
+        if (!wrap) continue;
+        wrap.innerHTML = `
+          <div class="item-entry">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-warning fw-bold small">Foto 0${i+1}</span>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <img id="prev_gallery_${i}_src" src="./IMG_4803.jpg" class="img-preview-box img-preview-landscape" alt="Foto ${i+1}">
+              <div class="flex-grow-1">
+                <span class="badge-preview-tag d-inline-block mb-1">Imagen Actual</span>
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" data-cms-bind="gallery.${i}.src" oninput="updatePreview('prev_gallery_${i}_src', this.value)">
+                  <label class="btn btn-outline-secondary mb-0">
+                    <i class="bi bi-folder2-open"></i> Subir
+                    <input type="file" accept="image/*" class="d-none" onchange="handleImageFile(this, 'gallery.${i}.src', 'prev_gallery_${i}_src')">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <input type="text" class="form-control form-control-sm mb-2" data-cms-bind="gallery.${i}.title" placeholder="Título">
+            <textarea class="form-control form-control-sm" rows="2" data-cms-bind="gallery.${i}.desc" placeholder="Descripción"></textarea>
+          </div>
+        `;
+      }
+    }
+    renderGalleryInputs();
 
     function getNested(obj, path) {
       return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
@@ -404,36 +746,116 @@
       cur[parts[parts.length - 1]] = value;
     }
 
+    // Actualiza el thumbnail visual de la imagen
+    function updatePreview(imgId, url) {
+      const img = document.getElementById(imgId);
+      if (img && url) {
+        img.src = url;
+      }
+    }
+
     function loadData() {
       const stored = localStorage.getItem('msl_landing_cms_data');
       siteData = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
+      // Fusionar valores por defecto para claves nuevas
+      siteData = Object.assign(JSON.parse(JSON.stringify(DEFAULT_CMS_DATA)), siteData);
       populateForm();
     }
 
     function populateForm() {
+      // Inputs simples
       document.querySelectorAll('[data-cms-bind]').forEach(input => {
-        const val = getNested(siteData, input.dataset.cmsBind);
-        if (val !== undefined) input.value = val;
+        const path = input.dataset.cmsBind;
+        const val = getNested(siteData, path);
+        if (val !== undefined && val !== null) {
+          input.value = val;
+        }
       });
+
+      // Actualizar todos los thumbnails visuales de imágenes
+      updateAllImagePreviews();
+
+      // Frases rotatorias del hero
+      const rot = siteData.hero && siteData.hero.rotating_phrases;
+      if (rot && Array.isArray(rot)) {
+        document.getElementById('hero_rotating_phrases_input').value = rot.join('\n');
+      }
+
+      // Spotify lyrics
+      const lyrics = siteData.spotify_lyrics;
+      if (lyrics && Array.isArray(lyrics)) {
+        document.getElementById('spotify_lyrics_input').value = lyrics.join('\n');
+      }
+
+      // Prueba social
+      if (siteData.social_proof) {
+        document.getElementById('social_proof_enabled_check').checked = siteData.social_proof.enabled !== false;
+        if (Array.isArray(siteData.social_proof.list)) {
+          const formatted = siteData.social_proof.list.map(p => `${p.name} | ${p.flag || '🇨🇱'} | ${p.country}`).join('\n');
+          document.getElementById('social_proof_list_input').value = formatted;
+        }
+      }
+    }
+
+    function updateAllImagePreviews() {
+      // Avatar
+      if (siteData.brand && siteData.brand.avatar_img) updatePreview('prev_brand_avatar_img', siteData.brand.avatar_img);
+      // Bio
+      if (siteData.bio && siteData.bio.photo) updatePreview('prev_bio_photo', siteData.bio.photo);
+      // Clases
+      if (siteData.clases && Array.isArray(siteData.clases)) {
+        siteData.clases.forEach((c, idx) => {
+          if (c.img) updatePreview('prev_clases_' + idx + '_img', c.img);
+        });
+      }
+      // Galería
+      if (siteData.gallery && Array.isArray(siteData.gallery)) {
+        siteData.gallery.forEach((g, idx) => {
+          if (g.src) updatePreview('prev_gallery_' + idx + '_src', g.src);
+        });
+      }
     }
 
     function readForm() {
+      // Inputs simples
       document.querySelectorAll('[data-cms-bind]').forEach(input => {
         setNested(siteData, input.dataset.cmsBind, input.value);
       });
+
+      // Frases rotatorias del Hero
+      const rotText = document.getElementById('hero_rotating_phrases_input').value;
+      if (!siteData.hero) siteData.hero = {};
+      siteData.hero.rotating_phrases = rotText.split('\n').map(s => s.trim()).filter(Boolean);
+
+      // Frases de Spotify
+      const lyricsText = document.getElementById('spotify_lyrics_input').value;
+      siteData.spotify_lyrics = lyricsText.split('\n').map(s => s.trim()).filter(Boolean);
+
+      // Prueba social
+      if (!siteData.social_proof) siteData.social_proof = {};
+      siteData.social_proof.enabled = document.getElementById('social_proof_enabled_check').checked;
+      const spLines = document.getElementById('social_proof_list_input').value.split('\n').map(s => s.trim()).filter(Boolean);
+      siteData.social_proof.list = spLines.map(line => {
+        const parts = line.split('|').map(p => p.trim());
+        return {
+          name: parts[0] || 'Participante',
+          flag: parts[1] || '🇨🇱',
+          country: parts[2] || 'Chile'
+        };
+      });
     }
 
-    function handleImageFile(input, path) {
+    function handleImageFile(input, path, previewId) {
       const file = input.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = (e) => {
+        const base64 = e.target.result;
         const targetInput = document.querySelector(`[data-cms-bind="${path}"]`);
-        if (targetInput) {
-          targetInput.value = e.target.result;
-          setNested(siteData, path, e.target.result);
-          markChanged();
-        }
+        if (targetInput) targetInput.value = base64;
+        setNested(siteData, path, base64);
+        if (previewId) updatePreview(previewId, base64);
+        markChanged();
       };
       reader.readAsDataURL(file);
     }
@@ -444,9 +866,8 @@
       status.className = 'small text-warning fw-bold';
     }
 
-    // Detectar cambios en los inputs para avisar que hay cambios pendientes
     document.addEventListener('input', (e) => {
-      if (e.target && e.target.hasAttribute('data-cms-bind')) {
+      if (e.target && (e.target.hasAttribute('data-cms-bind') || e.target.tagName === 'TEXTAREA')) {
         markChanged();
       }
     });
@@ -483,12 +904,12 @@
       status.className = 'small text-success fw-bold';
       setTimeout(() => {
         status.textContent = 'Cambios sincronizados';
-        status.className = 'small text-secondary';
+        status.className = 'small text-secondary fw-semibold';
       }, 4000);
     });
 
     document.getElementById('resetDefaultsBtn').addEventListener('click', () => {
-      if (confirm('¿Seguro que deseas restablecer los datos por defecto?')) {
+      if (confirm('¿Seguro que deseas restablecer todos los valores por defecto oficiales?')) {
         siteData = JSON.parse(JSON.stringify(DEFAULT_CMS_DATA));
         localStorage.setItem('msl_landing_cms_data', JSON.stringify(siteData));
         populateForm();
@@ -536,4 +957,3 @@
   </script>
 </body>
 </html>
-
